@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Pixelium Solutions - IT, Web & Network Experts</title>
+    <meta name="description" content="Pixelium Solutions offers expert IT consultancy, custom software engineering, network infrastructure, and web development services for small to medium-sized businesses. Get a free consultation today.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.min.js"></script>
+
+    <!-- Custom Tailwind Configuration (for primary colors) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0a58ca', // A strong, professional blue
+                        'primary-dark': '#002d62', // A darker blue for accents
+                        'accent-orange': '#f97316', // Vibrant orange for CTAs
+                        'accent-orange-hover': '#ea580c',
+                        'light-gray': '#f8f9fa', // A very light gray for backgrounds
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Clean, modern font
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Basic Styles for Modal Transitions -->
+    <style>
+        .modal {
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .portfolio-item {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .portfolio-item.hidden {
+            transform: scale(0.9);
+            opacity: 0;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        /* Simple active state for nav links */
+        .nav-link.active {
+            color: #f97316; /* accent-orange */
+            font-weight: 600;
+        }
+        .filter-btn.active {
+            background-color: #0a58ca; /* primary-blue */
+            color: white;
+        }
+        /* Styles for blog post content */
+        .blog-content h2 {
+            font-size: 1.875rem; /* 3xl */
+            font-weight: 600;
+            color: #002d62; /* primary-dark */
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .blog-content p {
+            font-size: 1.125rem; /* xl */
+            line-height: 1.75;
+            color: #374151; /* gray-700 */
+            margin-bottom: 1.5rem;
+        }
+        .blog-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            color: #374151;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- ===== HEADER & NAVIGATION ===== -->
+    <header class="sticky top-0 z-40 w-full bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="nav-link" data-target="home">
+                <img src="logo.png" alt="Pixelium Solutions Logo" class="h-10 w-auto" onerror="this.outerHTML='<span class=\'text-3xl font-bold text-primary-blue\'>Pixelium<span class=\'text-accent-orange\'>.</span></span>'">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="text-gray-600 hover:text-accent-orange nav-link active" data-target="home">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-accent-orange nav-link" data-target="about">About Us</a>
+                <a href="#services" class="text-gray-600 hover:text-accent-orange nav-link" data-target="services">Services</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-accent-orange nav-link" data-target="portfolio">Portfolio</a>
+                <a href="#blog" class="text-gray-600 hover:text-accent-orange nav-link" data-target="blog">Blog</a>
+                <a href="#contact" class="text-gray-600 hover:text-accent-orange nav-link" data-target="contact">Contact</a>
+                <button id="nav-quote-btn" class="ml-4 px-5 py-2 bg-accent-orange text-white rounded-full font-medium hover:bg-accent-orange-hover transition-colors">
+                    Request a Quote
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-gray-800 focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg z-30">
+            <a href="#home" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 nav-link" data-target="home">Home</a>
+            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 nav-link" data-target="about">About Us</a>
+            <a href="#services" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 nav-link" data-target="services">Services</a>
+            <a href="#portfolio" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 nav-link" data-target="portfolio">Portfolio</a>
+            <a href="#blog" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 nav-link" data-target="blog">Blog</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 nav-link" data-target="contact">Contact</a>
+            <div class="px-6 py-4">
+                <button class="w-full px-5 py-2 bg-accent-orange text-white rounded-full font-medium hover:bg-accent-orange-hover transition-colors modal-open-btn">
+                    Request a Quote
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== REQUEST A QUOTE MODAL ===== -->
+    <div id="quote-modal" class="modal fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4 opacity-0 visibility-hidden">
+        <div class="bg-white w-full max-w-lg p-8 rounded-2xl shadow-2xl transform transition-transform translate-y-10 scale-95">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-primary-dark">Get a Free Consultation</h3>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">
+                    <i data-lucide="x" class="w-7 h-7"></i>
+                </button>
+            </div>
+            <form action="#" method="POST">
+                <div class="space-y-4">
+                    <div>
+                        <label for="modal-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="modal-name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                    </div>
+                    <div>
+                        <label for="modal-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="modal-email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                    </div>
+                    <div>
+                        <label for="modal-company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                        <input type="text" id="modal-company" name="company" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                    </div>
+                    <div>
+                        <label for="modal-service" class="block text-sm font-medium text-gray-700">Service of Interest</label>
+                        <select id="modal-service" name="service" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white">
+                            <option>Select a service</option>
+                            <option value="it-consultancy">IT Consultancy</option>
+                            <option value="networking">Networking</option>
+                            <option value="infrastructure">Network Infrastructure</option>
+                            <option value="software">Software Engineering</option>
+                            <option value="web-dev">Web Development</option>
+                            <option value="design">Graphic Designing</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="modal-message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-colors">
+                        Send Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== PAGE CONTENT WRAPPER ===== -->
+    <div id="page-container">
+
+        <!-- ===== HOME PAGE ===== -->
+        <main id="home-page" data-page="home" class="page-content">
+            <!-- Hero Section -->
+            <section class="relative bg-primary-blue text-white py-24 md:py-40">
+                <div class="absolute inset-0 bg-black opacity-20"></div>
+                <div class="container mx-auto px-6 relative z-10">
+                    <div class="max-w-3xl">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                            Empowering Your Business with
+                            <span class="text-accent-orange">Scalable Tech</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-200 mb-10">
+                            From robust IT strategies to custom software and secure networks, Pixelium Solutions is your dedicated partner in digital transformation.
+                        </p>
+                        <a href="#contact" data-target="contact" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg">
+                            Get a Free Consultation
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Services Overview -->
+            <section class="py-20 bg-light-gray">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Core Services</h2>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">We provide the full spectrum of IT services to move your business forward.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Service Card 1 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="briefcase-business" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">IT Consultancy</h3>
+                            <p class="text-gray-600 mb-6">Strategic guidance to align your technology with your business goals.</p>
+                            <a href="#service-it" data-target="service-it" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 2 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="network" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Networking</h3>
+                            <p class="text-gray-600 mb-6">Designing and managing secure, high-performance networks.</p>
+                            <a href="#service-network" data-target="service-network" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 3 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="server" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Network Infrastructure</h3>
+                            <p class="text-gray-600 mb-6">Building the rock-solid hardware foundation your business relies on.</p>
+                            <a href="#service-infra" data-target="service-infra" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 4 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="code-xml" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Software Engineering</h3>
+                            <p class="text-gray-600 mb-6">Custom applications built to solve your unique challenges.</p>
+                            <a href="#service-software" data-target="service-software" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 5 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="monitor-smartphone" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Web Development</h3>
+                            <p class="text-gray-600 mb-6">Engaging, responsive websites that convert visitors into customers.</p>
+                            <a href="#service-web" data-target="service-web" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 6 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="palette" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Graphic Designing</h3>
+                            <p class="text-gray-600 mb-6">Creating a memorable brand identity that stands out.</p>
+                            <a href="#service-design" data-target="service-design" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Trusted by Growing Businesses</h2>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">See what our clients have to say about our partnership.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
+                            <p class="text-gray-700 text-lg italic mb-6">"Pixelium Solutions transformed our outdated network. Our team is more productive, and our data is finally secure. They are true partners."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/50x50/0a58ca/white?text=JS" alt="John Smith" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary-dark">John Smith</h4>
+                                    <p class="text-gray-600 text-sm">CEO, Innovate Logistics</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
+                            <p class="text-gray-700 text-lg italic mb-6">"The custom software they built for us automated 80% of our manual data entry. It's been a complete game-changer for our operations."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/50x50/0a58ca/white?text=ML" alt="Maria Lee" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary-dark">Maria Lee</h4>
+                                    <p class="text-gray-600 text-sm">COO, FinCore Analytics</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
+                            <p class="text-gray-700 text-lg italic mb-6">"From our new website to a complete rebrand, the Pixelium team was brilliant. They listened to our vision and delivered beyond expectations."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/50x50/0a58ca/white?text=DW" alt="David Wang" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary-dark">David Wang</h4>
+                                    <p class="text-gray-600 text-sm">Marketing Director, Apex Realty</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Final CTA -->
+            <section class="bg-primary-dark text-white py-20">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Technology?</h2>
+                    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Pixelium Solutions can help you achieve your business goals.
+                    </p>
+                    <a href="#contact" data-target="contact" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg nav-link">
+                        Start Your Project Today
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- ===== ABOUT US PAGE ===== -->
+        <main id="about-page" data-page="about" class="page-content hidden">
+            <section class="py-20 bg-light-gray">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-16">About Pixelium Solutions</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
+                        <div>
+                            <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Mission</h2>
+                            <p class="text-lg text-gray-700 mb-4">To empower small and medium-sized businesses with enterprise-level IT solutions, custom software, and strategic guidance, enabling them to compete and thrive in a digital-first world.</p>
+                            <p class="text-lg text-gray-700">We believe technology should be an asset, not a burden. Our mission is to simplify the complex, secure the vulnerable, and build the future—one client at a time.</p>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Vision</h2>
+                            <p class="text-lg text-gray-700 mb-4">To be the most trusted and results-driven technology partner for SMBs, known for our unwavering commitment to client success, innovation, and integrity.</p>
+                            
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4 mt-8">Our Core Values</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Partnership:</strong> Your success is our success.</li>
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Integrity:</strong> Honest, transparent, and ethical in all we do.</li>
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Innovation:</strong> Continuously learning and adapting to deliver modern solutions.</li>
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Excellence:</strong> We hold ourselves to the highest standards of quality.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Meet the Team -->
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Meet Our Core Team</h2>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">The experts dedicated to your success.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=CEO" alt="Jane Doe, CEO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Jane Doe</h4>
+                            <p class="text-accent-orange font-medium mb-2">Founder & CEO</p>
+                            <p class="text-gray-600 text-sm">20+ years in IT strategy and leadership, dedicated to helping SMBs scale.</p>
+                        </div>
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=CTO" alt="Michael Chen, CTO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Michael Chen</h4>
+                            <p class="text-accent-orange font-medium mb-2">Chief Technology Officer</p>
+                            <p class="text-gray-600 text-sm">Lead architect for our software and infrastructure solutions.</p>
+                        </div>
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=Lead" alt="Emily Rodriguez, Lead Designer" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Emily Rodriguez</h4>
+                            <p class="text-accent-orange font-medium mb-2">Lead UI/UX & Brand</p>
+                            <p class="text-gray-600 text-sm">Crafting intuitive experiences and memorable brand identities.</p>
+                        </div>
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=Ops" alt="Sam Kelechi, Head of Operations" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Sam Kelechi</h4>
+                            <p class="text-accent-orange font-medium mb-2">Head of Operations</p>
+                            <p class="text-gray-600 text-sm">Ensuring every project is delivered on time and on budget.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== SERVICES MAIN PAGE ===== -->
+        <main id="services-page" data-page="services" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-6">Our Services</h1>
+                    <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">We offer a comprehensive suite of technology services. Explore each category to find the right solution for you.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <!-- Detailed Service Card 1 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="briefcase-business" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">IT Consultancy</h3>
+                                <p class="text-gray-700 mb-6">Our expert consultants work with you to create a technology roadmap that supports your growth, optimizes your budget, and mitigates risk. From security audits to digital transformation strategy, we provide the high-level insights you need.</p>
+                            </div>
+                            <a href="#service-it" data-target="service-it" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View IT Consultancy Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 2 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="network" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Networking</h3>
+                                <p class="text-gray-700 mb-6">A fast, reliable, and secure network is the backbone of any modern business. We design, implement, and manage wired and wireless networks that just work, complete with advanced security protocols, VPNs, and performance monitoring.</p>
+                            </div>
+                            <a href="#service-network" data-target="service-network" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Networking Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 3 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="server" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Network Infrastructure</h3>
+                                <p class="text-gray-700 mb-6">Go beyond the connection. We build and maintain your core infrastructure, including servers, data centers, cloud migrations (Azure/AWS), and virtualization. We ensure your systems are scalable, redundant, and always available.</p>
+                            </div>
+                            <a href="#service-infra" data-target="service-infra" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Infrastructure Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 4 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="code-xml" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Software Engineering</h3>
+                                <p class="text-gray-700 mb-6">When off-the-shelf software doesn't fit, we build it. Our engineers develop custom applications, automation scripts, and database solutions tailored to your exact processes, helping you reduce costs and increase efficiency.</p>
+                            </div>
+                            <a href="#service-software" data-target="service-software" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Software Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 5 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="monitor-smartphone" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Web Development</h3>
+                                <p class="text-gray-700 mb-6">Your website is your digital front door. We create beautiful, responsive, and SEO-friendly websites that look great on all devices. From simple landing pages to complex e-commerce platforms, we build sites that drive results.</p>
+                            </div>
+                            <a href="#service-web" data-target="service-web" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Web Dev Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 6 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="palette" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Graphic Designing</h3>
+                                <p class="text-gray-700 mb-6">A strong brand builds trust. Our design team creates cohesive visual identities, including logos, branding guidelines, marketing materials, and digital assets that capture your unique value and resonate with your audience.</p>
+                            </div>
+                            <a href="#service-design" data-target="service-design" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Design Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== SERVICE SUB-PAGES ===== -->
+        
+        <!-- IT Consultancy Page -->
+        <main id="service-it-page" data-page="service-it" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="briefcase-business" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">IT Consultancy</h1>
+                    <p class="text-xl text-gray-700 mb-10">Strategic guidance to align your technology with your business goals. We help you make smarter IT investments, manage risk, and plan for future growth.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Consultancy Process</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Discovery & Audit</h3>
+                                <p class="text-gray-700">We begin by conducting a comprehensive audit of your current IT systems, security protocols, and business processes to identify pain points and opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Strategy & Roadmap</h3>
+                                <p class="text-gray-700">Based on our findings, we develop a strategic, multi-year IT roadmap. This includes budget forecasting, technology recommendations, and a clear implementation plan.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Implementation & Governance</h3>
+                                <p class="text-gray-700">We can either guide your in-house team or manage the full implementation of new solutions, ensuring best practices are followed and disruption is minimized.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Ongoing Advisory (vCIO)</h3>
+                                <p class="text-gray-700">We act as your virtual Chief Information Officer (vCIO), providing ongoing strategic advice to ensure your technology scales with your business.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Reduce long-term IT costs</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Improve cybersecurity posture</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Increase operational efficiency</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Make informed, future-proof decisions</li>
+                    </ul>
+
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for IT Consultancy
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Networking Page -->
+        <main id="service-network-page" data-page="service-network" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="network" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">Networking</h1>
+                    <p class="text-xl text-gray-700 mb-10">Designing, implementing, and managing secure, high-performance wired and wireless networks tailored to your business needs.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Networking Process</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Assessment & Design</h3>
+                                <p class="text-gray-700">We analyze your current network, business needs, and physical layout to design a custom network map, including hardware placement (LAN/WAN) and WiFi coverage.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Implementation & Cabling</h3>
+                                <p class="text-gray-700">Our technicians perform professional, clean installations of all cabling, switches, routers, and access points with minimal disruption to your operations.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Security & Configuration</h3>
+                                <p class="text-gray-700">We implement robust security measures, including next-generation firewalls, secure VPNs for remote access, and guest network isolation to protect your data.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Monitoring & Management</h3>
+                                <p class="text-gray-700">We offer 24/7 network monitoring to identify and resolve issues before they impact your business, ensuring peak performance and reliability.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Increased uptime and reliability</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Faster data transfer and app speeds</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Robust security against cyber threats</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Scalable design for future growth</li>
+                    </ul>
+                    
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for Networking
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Network Infrastructure Page -->
+        <main id="service-infra-page" data-page="service-infra" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="server" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">Network Infrastructure</h1>
+                    <p class="text-xl text-gray-700 mb-10">Building the rock-solid hardware and cloud foundation your business relies on, from servers to cloud environments.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Infrastructure Process</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Infrastructure Audit</h3>
+                                <p class="text-gray-700">We review your existing on-premise servers, storage solutions, and cloud services (like Azure or AWS) to identify performance bottlenecks and security gaps.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Architecture Design</h3>
+                                <p class="text-gray-700">We design a future-proof infrastructure, whether it's a new server room, a data center refresh, or a hybrid-cloud strategy that balances cost and performance.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Migration & Deployment</h3>
+                                <p class="text-gray-700">Our team manages the complete setup of physical servers or the seamless migration of your data and applications to a public or private cloud environment.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Virtualization & Optimization</h3>
+                                <p class="text-gray-700">We use technologies like VMWare and Hyper-V to virtualize your servers, maximizing your hardware investment and simplifying disaster recovery.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> High availability and redundancy</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Optimized resource utilization</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Secure and compliant data storage</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Clear disaster recovery planning</li>
+                    </ul>
+                    
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for Infrastructure
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Software Engineering Page -->
+        <main id="service-software-page" data-page="service-software" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="code-xml" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">Software Engineering</h1>
+                    <p class="text-xl text-gray-700 mb-10">Custom applications, automation scripts, and database solutions built to solve your unique business challenges.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Software Development Lifecycle</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Discovery & Prototyping</h3>
+                                <p class="text-gray-700">We work closely with your stakeholders to define clear requirements, map out user stories, and create interactive prototypes to validate the concept.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Agile Development</h3>
+                                <p class="text-gray-700">Our team develops in "sprints," delivering functional pieces of the software regularly. This allows for continuous feedback and adaptation to changing needs.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Quality Assurance & Testing</h3>
+                                <p class="text-gray-700">We conduct rigorous testing—including unit, integration, and user acceptance testing—to ensure your new application is stable, secure, and bug-free.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Deployment & Support</h3>
+                                <p class="text-gray-700">We manage the "go-live" process, provide comprehensive user training, and offer ongoing support and maintenance plans to keep your application running smoothly.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Solves your unique business problems</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Automates manual and repetitive tasks</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Integrates with your existing systems</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> You retain full ownership of the IP</li>
+                    </ul>
+
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for Software
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Web Development Page -->
+        <main id="service-web-page" data-page="service-web" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="monitor-smartphone" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">Web Development</h1>
+                    <p class="text-xl text-gray-700 mb-10">Engaging, responsive, and SEO-friendly websites that convert visitors into customers.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Web Development Process</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Strategy & UI/UX Design</h3>
+                                <p class="text-gray-700">We start by understanding your audience and goals, then create intuitive wireframes and stunning visual mockups that reflect your brand.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Responsive Development</h3>
+                                <p class="text-gray-700">Our developers write clean, efficient code, ensuring your website looks and functions perfectly on desktops, tablets, and smartphones.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">CMS & E-Commerce</h3>
+                                <p class="text-gray-700">We build on platforms like WordPress or Shopify, or create custom solutions, giving you the power to easily manage your content and sell products online.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">SEO & Launch</h3>
+                                <p class="text-gray-700">Before launch, we implement on-page SEO best practices and optimize for speed. After launch, we monitor performance to ensure a smooth rollout.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> A professional 24/7 digital storefront</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Generate leads and drive sales</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Flawless experience on all devices</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Optimized for Google search</li>
+                    </ul>
+
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for Web Development
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Graphic Designing Page -->
+        <main id="service-design-page" data-page="service-design" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="palette" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">Graphic Designing</h1>
+                    <p class="text-xl text-gray-700 mb-10">Creating a memorable brand identity that stands out and builds trust with your audience.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Design Process</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Brand Discovery</h3>
+                                <p class="text-gray-700">We start with a deep dive into your company values, target audience, and competitors to define a unique visual strategy.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Concept & Creation</h3>
+                                <p class="text-gray-700">Our designers develop initial logo concepts, color palettes, and typography. We explore multiple directions to find the perfect fit for your brand.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Refinement & Feedback</h3>
+                                <p class="text-gray-700">We present the strongest concepts and work with you, iterating on the design until it's pixel-perfect and aligns perfectly with your vision.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Final Delivery & Style Guide</h3>
+                                <p class="text-gray-700">You receive all final logo files and a comprehensive brand style guide detailing how to use your new identity across all marketing materials.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Builds instant trust and credibility</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> A memorable and recognizable brand</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Ensures consistency across all media</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Differentiates you from competitors</li>
+                    </ul>
+
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for Design
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ===== PORTFOLIO / CASE STUDIES PAGE ===== -->
+        <main id="portfolio-page" data-page="portfolio" class="page-content hidden">
+            <section class="py-20 bg-light-gray">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-6">Our Work</h1>
+                    <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-12">We're proud of the solutions we've delivered. See how we've helped businesses like yours succeed.</p>
+                    
+                    <!-- Filter Buttons -->
+                    <div id="portfolio-filters" class="flex flex-wrap justify-center gap-3 mb-12">
+                        <button class="filter-btn active px-6 py-2 rounded-full font-medium transition-colors" data-filter="all">All</button>
+                        <button class="filter-btn px-6 py-2 rounded-full font-medium text-gray-700 bg-white hover:bg-gray-200 transition-colors" data-filter="web">Web Development</button>
+                        <button class="filter-btn px-6 py-2 rounded-full font-medium text-gray-700 bg-white hover:bg-gray-200 transition-colors" data-filter="software">Software Engineering</button>
+                        <button class="filter-btn px-6 py-2 rounded-full font-medium text-gray-700 bg-white hover:bg-gray-200 transition-colors" data-filter="network">Networking</button>
+                        <button class="filter-btn px-6 py-2 rounded-full font-medium text-gray-700 bg-white hover:bg-gray-200 transition-colors" data-filter="design">Graphic Designing</button>
+                    </div>
+
+                    <!-- Portfolio Grid -->
+                    <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Item 1 -->
+                        <div class="portfolio-item group" data-category="web">
+                            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                                <img src="https://placehold.co/600x400/0a58ca/white?text=FinCore+Website" alt="FinCore Analytics Website" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                                    <h4 class="text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Case Study</h4>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary-dark mt-4">FinCore Analytics Website</h3>
+                            <p class="text-accent-orange font-medium">Web Development</p>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="portfolio-item group" data-category="software">
+                            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                                <img src="https://placehold.co/600x400/0a58ca/white?text=Logistics+App" alt="Innovate Logistics Custom App" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                                    <h4 class="text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Case Study</h4>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary-dark mt-4">Innovate Logistics App</h3>
+                            <p class="text-accent-orange font-medium">Software Engineering</p>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="portfolio-item group" data-category="design">
+                            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                                <img src="https://placehold.co/600x400/0a58ca/white?text=Apex+Rebrand" alt="Apex Realty Rebrand" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                                    <h4 class="text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Case Study</h4>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary-dark mt-4">Apex Realty Rebrand</h3>
+                            <p class="text-accent-orange font-medium">Graphic Designing</p>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="portfolio-item group" data-category="network">
+                            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                                <img src="https://placehold.co/600x400/0a58ca/white?text=Clinic+Network" alt="HealthPlus Clinic Network Upgrade" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                                    <h4 class="text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Case Study</h4>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary-dark mt-4">HealthPlus Clinic Network</h3>
+                            <p class="text-accent-orange font-medium">Networking</p>
+                        </div>
+                        <!-- Item 5 -->
+                        <div class="portfolio-item group" data-category="web">
+                            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                                <img src="https://placehold.co/600x400/0a58ca/white?text=E-Commerce+Site" alt="Artisan Goods E-Commerce" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                                    <h4 class="text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Case Study</h4>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary-dark mt-4">Artisan Goods E-Commerce</h3>
+                            <p class="text-accent-orange font-medium">Web Development</p>
+                        </div>
+                        <!-- Item 6 -->
+                        <div class="portfolio-item group" data-category="software">
+                            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                                <img src="https://placehold.co/600x400/0a58ca/white?text=CRM+Tool" alt="Real-Time CRM Tool" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                                    <h4 class="text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Case Study</h4>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary-dark mt-4">Real-Time CRM Tool</h3>
+                            <p class="text-accent-orange font-medium">Software Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== BLOG / INSIGHTS PAGE ===== -->
+        <main id="blog-page" data-page="blog" class="page-content hidden">
+            <section class="py-20 bg-light-gray">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-6">Insights & News</h1>
+                    <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">Stay informed with the latest in technology, industry trends, and company updates from the Pixelium experts.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Blog Post 1 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                            <img src="https://placehold.co/600x400/0a58ca/white?text=IT+Trends" alt="Top 5 IT Trends for SMBs" class="w-full h-56 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <p class="text-accent-orange text-sm font-medium mb-2">IT STRATEGY</p>
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Top 5 IT Trends SMBs Can't Ignore in 2026</h3>
+                                <p class="text-gray-700 mb-6 flex-grow">From AI-driven security to hybrid cloud adoption, see which trends will have the biggest impact on your business...</p>
+                                <a href="#blog-post-1" data-target="blog-post-1" class="font-medium text-primary-blue hover:text-accent-orange mt-auto nav-link">Read More &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Blog Post 2 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                            <img src="https://placehold.co/600x400/0a58ca/white?text=Cybersecurity" alt="Cybersecurity Basics" class="w-full h-56 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <p class="text-accent-orange text-sm font-medium mb-2">SECURITY</p>
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">The Small Business Guide to Cybersecurity</h3>
+                                <p class="text-gray-700 mb-6 flex-grow">You don't need an enterprise budget to protect your data. Start with these fundamental security practices today...</p>
+                                <a href="#blog-post-2" data-target="blog-post-2" class="font-medium text-primary-blue hover:text-accent-orange mt-auto nav-link">Read More &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Blog Post 3 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                            <img src="https://placehold.co/600x400/0a58ca/white?text=Pixelium+News" alt="Pixelium Solutions News" class="w-full h-56 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <p class="text-accent-orange text-sm font-medium mb-2">COMPANY NEWS</p>
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Pixelium Solutions Named Top IT Provider</h3>
+                                <p class="text-gray-700 mb-6 flex-grow">We are thrilled to be recognized for our commitment to client success and technological innovation...</p>
+                                <a href="#blog-post-3" data-target="blog-post-3" class="font-medium text-primary-blue hover:text-accent-orange mt-auto nav-link">Read More &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== BLOG POST 1 PAGE ===== -->
+        <main id="blog-post-1-page" data-page="blog-post-1" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-3xl">
+                    <a href="#blog" data-target="blog" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to Blog
+                    </a>
+                    <p class="text-accent-orange text-base font-medium mb-2">IT STRATEGY</p>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-6">Top 5 IT Trends SMBs Can't Ignore in 2026</h1>
+                    <p class="text-gray-500 text-lg mb-8">Posted on <span id="post-date-1">October 28, 2025</span> by Jane Doe</p>
+                    
+                    <img src="https://placehold.co/800x400/0a58ca/white?text=IT+Trends" alt="Top 5 IT Trends for SMBs" class="w-full h-auto rounded-xl shadow-lg mb-10">
+                    
+                    <div class="blog-content">
+                        <p>The technology landscape is evolving at an unprecedented pace. For small to medium-sized businesses (SMBs), staying current isn't just about gaining a competitive edge—it's about survival. As we look towards 2026, several key trends are poised to redefine how SMBs operate, secure their data, and serve their customers. Ignoring them isn't an option. Here are the top 5 trends Pixelium Solutions is tracking for our clients.</p>
+                        
+                        <h2>1. Generative AI for Efficiency</h2>
+                        <p>Generative AI and tools like ChatGPT have moved from novelty to practical business tools. For SMBs, this means powerful new ways to automate tasks, improve customer service with intelligent chatbots, and even assist in content creation for marketing. The key is to find practical, cost-effective applications that boost efficiency without requiring a team of data scientists.</p>
+                        
+                        <h2>2. The Rise of the Hybrid Cloud</h2>
+                        <p>The "all-in" cloud approach is giving way to a more nuanced hybrid model. SMBs are realizing the value of keeping sensitive data on-premise (or in a private cloud) for security and control, while leveraging the scalability and cost-efficiency of public clouds (like Azure and AWS) for applications and storage. A well-designed hybrid strategy offers the best of both worlds.</p>
+                        
+                        <h2>3. AI-Driven Cybersecurity</h2>
+                        <p>As cyber threats become more sophisticated, traditional antivirus software is no longer enough. The next frontier is AI-driven cybersecurity. These systems can monitor network behavior in real-time, identify anomalies that suggest a breach, and respond automatically to threats—often before a human analyst even knows there's a problem. For SMBs without a large security team, this automated defense is a game-changer.</p>
+                        
+                        <h2>4. Hyper-Automation</h2>
+                        <p>This goes beyond simple task automation. Hyper-automation is about identifying and automating as many business processes as possible. This involves a combination of tools, including Robotic Process Automation (RPA), AI, and custom scripts, to create a seamless, end-to-end automated workflow. For SMBs, this can mean automating everything from invoice processing to employee onboarding.</p>
+                        
+                        <h2>5. Focus on Data Privacy & Compliance</h2>
+                        <p>With regulations like GDPR and CCPA setting global standards, data privacy is a top-tier business concern. Customers are more aware of their data rights, and the penalties for non-compliance are severe. SMBs can no longer treat privacy as an afterthought. Implementing strong data governance, transparent privacy policies, and secure data handling practices is now a fundamental requirement for building trust.</p>
+                        
+                        <h2>Conclusion</h2>
+                        <p>Navigating these trends can be daunting, but the opportunity they present is immense. The key is to be proactive, not reactive. At Pixelium Solutions, we specialize in helping SMBs understand and implement these technologies, creating a strategic roadmap that turns complex trends into tangible business value.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== BLOG POST 2 PAGE ===== -->
+        <main id="blog-post-2-page" data-page="blog-post-2" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-3xl">
+                    <a href="#blog" data-target="blog" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to Blog
+                    </a>
+                    <p class="text-accent-orange text-base font-medium mb-2">SECURITY</p>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-6">The Small Business Guide to Cybersecurity</h1>
+                    <p class="text-gray-500 text-lg mb-8">Posted on <span id="post-date-2">October 15, 2025</span> by Michael Chen</p>
+                    
+                    <img src="https://placehold.co/800x400/0a58ca/white?text=Cybersecurity" alt="Cybersecurity Basics" class="w-full h-auto rounded-xl shadow-lg mb-10">
+                    
+                    <div class="blog-content">
+                        <p>Many small business owners believe they are "too small to be a target" for cybercriminals. This is a dangerous misconception. In reality, SMBs are often seen as "soft targets" because they lack the robust security infrastructure of larger enterprises. The good news is that you don't need an enterprise-level budget to protect your business. You can significantly improve your security posture by focusing on the fundamentals.</p>
+                        
+                        <h2>1. Train Your People (The Human Firewall)</h2>
+                        <p>Your employees are your first and last line of defense. The most common way attackers get in is through phishing emails. Conduct regular training on how to spot suspicious emails, the importance of strong, unique passwords, and the dangers of using public Wi-Fi for company business.</p>
+                        
+                        <h2>2. Implement Multi-Factor Authentication (MFA)</h2>
+                        <p>If you do only one
+                        thing on this list, make it this one. MFA requires a user to provide two or more verification factors to gain access to a resource (like an email account or application). This means that even if a hacker steals an employee's password, they still can't log in without the second factor (usually a code from a phone app). Enable it on every account that offers it.</p>
+                        
+                        <h2>3. Keep Everything Updated</h2>
+                        <p>Software updates (or "patches") often contain critical security fixes for vulnerabilities that hackers have discovered. Ensure that all your operating systems, applications (especially web browsers), and antivirus software are set to update automatically. This is one of the simplest and most effective ways to close security holes.</p>
+                        
+                        <h2>4. Back Up Your Data (and Test It!)</h2>
+                        <p>Ransomware—where a hacker encrypts your files and demands payment to unlock them—can be devastating. The best defense is a good backup strategy. Follow the 3-2-1 rule:
+                            <ul>
+                                <li>Have **three** copies of your data.</li>
+                                <li>On **two** different media types (e.g., a local drive and in the cloud).</li>
+                                <li>With **one** copy off-site.</li>
+                            </ul>
+                        And most importantly, test your backups regularly to ensure you can actually restore your data when you need it.</p>
+                        
+                        <h2>5. Secure Your Network</h2>
+                        <p>Change the default password on your office router. Use a strong firewall to block malicious traffic. If you have employees working remotely, require them to use a Virtual Private Network (VPN) to create a secure, encrypted connection to the company network.</p>
+                        
+                        <p>Building a strong cybersecurity foundation is an ongoing process, not a one-time project. By implementing these fundamental practices, you can dramatically reduce your risk and protect the business you've worked so hard to build.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== BLOG POST 3 PAGE ===== -->
+        <main id="blog-post-3-page" data-page="blog-post-3" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-3xl">
+                    <a href="#blog" data-target="blog" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to Blog
+                    </a>
+                    <p class="text-accent-orange text-base font-medium mb-2">COMPANY NEWS</p>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-6">Pixelium Solutions Named Top IT Provider</h1>
+                    <p class="text-gray-500 text-lg mb-8">Posted on <span id="post-date-3">October 1, 2025</span> by Pixelium Team</p>
+                    
+                    <img src="https://placehold.co/800x400/0a58ca/white?text=Pixelium+News" alt="Pixelium Solutions News" class="w-full h-auto rounded-xl shadow-lg mb-10">
+                    
+                    <div class="blog-content">
+                        <p>We are thrilled and humbled to announce that Pixelium Solutions has been named one of the "Top 10 IT Service Providers for SMBs" by TechReview Monthly. This award is a testament to our team's hard work and, most importantly, our unwavering commitment to the success of our clients.</p>
+                        
+                        <p>When our founder, Jane Doe, started Pixelium Solutions over a decade ago, she had one simple mission: to provide enterprise-level IT strategy and support to the small and medium-sized businesses that form the backbone of our economy. This recognition validates that mission and energizes us to continue innovating.</p>
+                        
+                        <h2>A Partnership Approach</h2>
+                        <p>We've always believed that IT shouldn't be a cost center, but a strategic asset. We don't just fix problems; we partner with our clients to build technology roadmaps that align with their long-term goals. Seeing our clients grow, scale, and achieve their dreams, powered in part by the solutions we've built together, is our greatest reward.</p>
+                        
+                        <p>"This award isn't just for us—it's for our clients," said Jane Doe, CEO. "They trust us with their most critical systems, and we take that responsibility seriously. Their partnership challenges us to be better, faster, and more innovative every single day. We are incredibly grateful for their trust and collaboration."</p>
+                        
+                        <h2>Looking Ahead</h2>
+                        <p>While we're proud of this milestone, we're even more excited about the future. Technology is changing faster than ever, and we're committed to staying at the forefront, guiding our clients through the complexities of AI, cybersecurity, and cloud infrastructure.</p>
+                        
+                        <p>Thank you to our amazing team, our incredible clients, and TechReview Monthly for this honor. We're just getting started.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ===== CONTACT PAGE ===== -->
+        <main id="contact-page" data-page="contact" class="page-content hidden">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-6">Get in Touch</h1>
+                    <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">We're here to help. Send us a message, and our team will get back to you within one business day.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <!-- Contact Form -->
+                        <div class="bg-light-gray p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100">
+                            <h2 class="text-3xl font-bold text-primary-dark mb-8">Send Us a Message</h2>
+                            <form action="#" method="POST">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <input type="text" id="contact-name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                    </div>
+                                    <div>
+                                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                        <input type="email" id="contact-email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <label for="contact-company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                                    <input type="text" id="contact-company" name="company" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                </div>
+                                <div class="mt-6">
+                                    <label for="contact-service" class="block text-sm font-medium text-gray-700">Service of Interest</label>
+                                    <select id="contact-service" name="service" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white">
+                                        <option>Select a service</option>
+                                        <option value="it-consultancy">IT Consultancy</option>
+                                        <option value="networking">Networking</option>
+                                        <option value="infrastructure">Network Infrastructure</option>
+                                        <option value="software">Software Engineering</option>
+                                        <option value="web-dev">Web Development</option>
+                                        <option value="design">Graphic Designing</option>
+                                    </select>
+                                </div>
+                                <div class="mt-6">
+                                    <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="contact-message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue"></textarea>
+                                </div>
+                                <div class="mt-8">
+                                    <button type="submit" class="w-full px-8 py-4 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-colors shadow-lg">
+                                        Submit Request
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Contact Info & Map -->
+                        <div>
+                            <h2 class="text-3xl font-bold text-primary-dark mb-8">Contact Details</h2>
+                            <div class="space-y-6 text-lg">
+                                <div class="flex items-start">
+                                    <i data-lucide="phone" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Phone</h4>
+                                        <a href="tel:+15551234567" class="text-primary-blue hover:text-accent-orange">+1 (555) 123-4567</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="mail" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Email</h4>
+                                        <a href="mailto:hello@pixelium.com" class="text-primary-blue hover:text-accent-orange">hello@pixelium.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Office</h4>
+                                        <p class="text-gray-700">123 Tech Avenue, Suite 400<br>Metropolis, NY 10001</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Embedded Map Placeholder -->
+                            <div class="mt-10 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                                <img src="https://placehold.co/600x400/e0e0e0/666?text=Embedded+Google+Map" alt="Google Map of Pixelium Solutions location" class="w-full h-80 object-cover">
+                                <!-- 
+                                Real Google Maps Embed:
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.213893325791!2d-73.98785368459365!3d40.757303979327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c634139f%3A0x6b97E11A99f3F2a!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1678886565123!5m2!1sen!2sus" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+    </div> <!-- End Page Container -->
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-gray-900 text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Column 1: Logo & Social -->
+                <div>
+                    <a href="#home" class="nav-link" data-target="home">
+                        <!-- White version of logo for dark footer -->
+                        <img src="logo.png" alt="Pixelium Solutions Logo" class="h-10 w-auto mb-4" style="filter: brightness(0) invert(1) opacity(0.9);" onerror="this.outerHTML='<h3 class=\'text-3xl font-bold text-white mb-4\'>Pixelium<span class=\'text-accent-orange\'>.</span></h3>'">
+                    </a>
+                    <p class="text-gray-400 mb-6">Empowering Your Business with Scalable Tech Solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Twitter"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" data-target="home" class="hover:text-white nav-link">Home</a></li>
+                        <li><a href="#about" data-target="about" class="hover:text-white nav-link">About Us</a></li>
+                        <li><a href="#portfolio" data-target="portfolio" class="hover:text-white nav-link">Portfolio</a></li>
+                        <li><a href="#blog" data-target="blog" class="hover:text-white nav-link">Blog</a></li>
+                        <li><a href="#contact" data-target="contact" class="hover:text-white nav-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Services -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Our Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#service-it" data-target="service-it" class="hover:text-white nav-link">IT Consultancy</a></li>
+                        <li><a href="#service-network" data-target="service-network" class="hover:text-white nav-link">Networking</a></li>
+                        <li><a href="#service-infra" data-target="service-infra" class="hover:text-white nav-link">Network Infrastructure</a></li>
+                        <li><a href="#service-software" data-target="service-software" class="hover:text-white nav-link">Software Engineering</a></li>
+                        <li><a href="#service-web" data-target="service-web" class="hover:text-white nav-link">Web Development</a></li>
+                        <li><a href="#service-design" data-target="service-design" class="hover:text-white nav-link">Graphic Designing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4: Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <span>123 Tech Avenue, Suite 400<br>Metropolis, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="phone" class="w-5 h-5 mr-3"></i>
+                            <a href="tel:+15551234567" class="hover:text-white">+1 (555) 123-4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="mail" class="w-5 h-5 mr-3"></i>
+                            <a href="mailto:hello@pixelium.com" class="hover:text-white">hello@pixelium.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-10">
+            
+            <div class="text-center text-gray-500">
+                &copy; <span id="current-year"></span> Pixelium Solutions. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Initialize Lucide Icons ---
+            // This function finds all `data-lucide` attributes and replaces them with SVG icons.
+            lucide.createIcons();
+
+            // --- Set Current Year in Footer ---
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // --- Page Navigation ---
+            const allPages = document.querySelectorAll('.page-content');
+            const allNavLinks = document.querySelectorAll('.nav-link');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Function to show a specific page and hide all others
+            function showPage(pageId) {
+                // Hide all pages
+                allPages.forEach(page => {
+                    page.classList.add('hidden');
+                });
+                
+                // Show the target page
+                const targetPage = document.querySelector(`[data-page="${pageId}"]`);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                } else {
+                    // Fallback to home if page not found
+                    document.querySelector(`[data-page="home"]`).classList.remove('hidden');
+                    pageId = 'home'; // Update pageId to 'home' for active link
+                }
+
+                // Update active state on nav links
+                allNavLinks.forEach(link => {
+                    if (link.dataset.target === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Scroll to top on page change
+                window.scrollTo(0, 0);
+
+                // Close mobile menu if it's open
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Add click event listener to all nav links (using event delegation)
+            document.body.addEventListener('click', (event) => {
+                const navLink = event.target.closest('.nav-link');
+                if (navLink) {
+                    event.preventDefault(); // Prevent default anchor link behavior
+                    const targetPageId = navLink.dataset.target;
+                    
+                    if (targetPageId) {
+                        // Update hash in URL
+                        window.location.hash = targetPageId;
+                        // Show the page
+                        showPage(targetPageId);
+                    }
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Modal Logic ---
+            const modal = document.getElementById('quote-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const openModalBtns = document.querySelectorAll('.modal-open-btn, #nav-quote-btn');
+
+            function openModal() {
+                modal.classList.remove('opacity-0', 'visibility-hidden');
+                modal.querySelector('div').classList.remove('translate-y-10', 'scale-95');
+            }
+
+            function closeModal() {
+                modal.classList.add('opacity-0', 'visibility-hidden');
+                modal.querySelector('div').classList.add('translate-y-10', 'scale-95');
+            }
+
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', openModal);
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Close modal if background is clicked
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // --- Portfolio Filtering Logic ---
+            const filterContainer = document.getElementById('portfolio-filters');
+            const filterBtns = filterContainer ? filterContainer.querySelectorAll('.filter-btn') : [];
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            if (filterContainer) {
+                filterContainer.addEventListener('click', (event) => {
+                    const targetBtn = event.target.closest('.filter-btn');
+                    if (!targetBtn) return;
+
+                    // Update active button state
+                    filterBtns.forEach(btn => {
+                        btn.classList.remove('active', 'bg-primary-blue', 'text-white');
+                        btn.classList.add('text-gray-700', 'bg-white', 'hover:bg-gray-200');
+                    });
+                    targetBtn.classList.add('active', 'bg-primary-blue', 'text-white');
+                    targetBtn.classList.remove('text-gray-700', 'bg-white', 'hover:bg-gray-200');
+
+                    const filterValue = targetBtn.dataset.filter;
+
+                    // Show/hide portfolio items
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.dataset.category === filterValue) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            }
+
+            // --- Initial Page Load ---
+            // Check for hash in URL to load a specific page, otherwise default to home
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+        });
+    </script>
+
+</body>
+</html>
