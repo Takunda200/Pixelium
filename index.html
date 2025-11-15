@@ -10,22 +10,6 @@
     <meta name="keywords" content="IT consultancy, web development, networking, software engineering, graphic design, IT solutions">
     <meta name="author" content="Pixelium Solutions">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Pixelium Solutions - IT, Web & Network Experts">
-    <meta property="og:description" content="Empowering Your Business with Scalable Tech Solutions">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pixeliumsolutions.com">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-
-    <!-- Preload critical resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -47,64 +31,17 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'bounce-slow': 'bounce 2s infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        }
-                    }
                 },
             },
         }
     </script>
     
     <style>
-        /* Enhanced Modal Transitions */
+        /* Modal Transitions */
         .modal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        .modal-content {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
         
-        /* Loading Animation */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .loading {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0a58ca;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #002d62;
-        }
-
         /* Blog content styles */
         .blog-content h2 {
             font-size: 1.875rem;
@@ -114,13 +51,6 @@
             margin-bottom: 1rem;
             border-left: 4px solid #f97316;
             padding-left: 1rem;
-        }
-        .blog-content h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #002d62;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
         }
         .blog-content p {
             font-size: 1.125rem;
@@ -137,13 +67,6 @@
         .blog-content li {
             margin-bottom: 0.5rem;
             line-height: 1.6;
-        }
-        .blog-content blockquote {
-            border-left: 4px solid #0a58ca;
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: #6b7280;
         }
 
         /* Navigation active states */
@@ -163,28 +86,23 @@
         .portfolio-item:hover {
             transform: translateY(-5px);
         }
-
-        /* Form validation styles */
-        .form-input:invalid {
-            border-color: #ef4444;
+        
+        /* Page transition */
+        .page-content {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        .form-input:valid {
-            border-color: #10b981;
+        .page-content.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-white">
 
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 z-50 bg-white flex items-center justify-center transition-opacity duration-300">
-        <div class="text-center">
-            <div class="w-16 h-16 border-4 border-primary-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-primary-dark font-semibold">Loading Pixelium Solutions...</p>
-        </div>
-    </div>
-
     <!-- ===== HEADER & NAVIGATION ===== -->
-    <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-sm shadow-md transition-all duration-300">
+    <header class="sticky top-0 z-40 w-full bg-white shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
             <a href="#home" class="nav-link flex items-center" data-target="home">
@@ -202,7 +120,7 @@
                 <a href="#portfolio" class="text-gray-600 hover:text-accent-orange transition-colors nav-link" data-target="portfolio">Portfolio</a>
                 <a href="#blog" class="text-gray-600 hover:text-accent-orange transition-colors nav-link" data-target="blog">Blog</a>
                 <a href="#contact" class="text-gray-600 hover:text-accent-orange transition-colors nav-link" data-target="contact">Contact</a>
-                <button id="nav-quote-btn" class="ml-4 px-6 py-2.5 bg-accent-orange text-white rounded-lg font-medium hover:bg-accent-orange-hover transition-colors shadow-lg hover:shadow-xl">
+                <button id="nav-quote-btn" class="ml-4 px-6 py-2.5 bg-accent-orange text-white rounded-lg font-medium hover:bg-accent-orange-hover transition-colors shadow-lg">
                     Get Quote
                 </button>
             </div>
@@ -216,7 +134,7 @@
         </nav>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-30 border-t">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg z-30 border-t">
             <div class="container mx-auto px-6 py-4">
                 <a href="#home" class="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors nav-link" data-target="home">Home</a>
                 <a href="#about" class="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors nav-link" data-target="about">About Us</a>
@@ -233,14 +151,9 @@
         </div>
     </header>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 z-30 p-3 bg-primary-blue text-white rounded-full shadow-lg hover:bg-primary-dark transition-all opacity-0 invisible">
-        <i data-lucide="arrow-up" class="w-5 h-5"></i>
-    </button>
-
     <!-- ===== REQUEST A QUOTE MODAL ===== -->
-    <div id="quote-modal" class="modal fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 opacity-0 invisible transition-all duration-300">
-        <div class="modal-content bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl transform transition-all duration-300 scale-95">
+    <div id="quote-modal" class="modal fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 opacity-0 invisible">
+        <div class="bg-white w-full max-w-lg p-8 rounded-2xl shadow-2xl">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold text-primary-dark">Get a Free Consultation</h3>
                 <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 transition-colors p-1">
@@ -248,17 +161,15 @@
                 </button>
             </div>
             <form id="quote-form" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                        <input type="text" id="modal-name" name="name" required 
-                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue transition-colors">
-                    </div>
-                    <div>
-                        <label for="modal-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                        <input type="email" id="modal-email" name="email" required 
-                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue transition-colors">
-                    </div>
+                <div>
+                    <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                    <input type="text" id="modal-name" name="name" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue transition-colors">
+                </div>
+                <div>
+                    <label for="modal-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                    <input type="email" id="modal-email" name="email" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue transition-colors">
                 </div>
                 <div>
                     <label for="modal-company" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
@@ -279,36 +190,16 @@
                     </select>
                 </div>
                 <div>
-                    <label for="modal-budget" class="block text-sm font-medium text-gray-700 mb-1">Project Budget</label>
-                    <select id="modal-budget" name="budget" 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white transition-colors">
-                        <option value="">Select budget range</option>
-                        <option value="1k-5k">$1,000 - $5,000</option>
-                        <option value="5k-15k">$5,000 - $15,000</option>
-                        <option value="15k-50k">$15,000 - $50,000</option>
-                        <option value="50k+">$50,000+</option>
-                    </select>
-                </div>
-                <div>
                     <label for="modal-message" class="block text-sm font-medium text-gray-700 mb-1">Project Details *</label>
                     <textarea id="modal-message" name="message" rows="4" required 
                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue transition-colors"
-                              placeholder="Tell us about your project requirements, timeline, and any specific challenges you're facing..."></textarea>
+                              placeholder="Tell us about your project requirements..."></textarea>
                 </div>
                 <button type="submit" class="w-full px-6 py-3.5 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-colors shadow-lg flex items-center justify-center">
                     <span>Send Request</span>
                     <i data-lucide="send" class="w-5 h-5 ml-2"></i>
                 </button>
-                <p class="text-sm text-gray-500 text-center">We'll get back to you within 24 hours</p>
             </form>
-        </div>
-    </div>
-
-    <!-- Success Notification -->
-    <div id="success-notification" class="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300">
-        <div class="flex items-center">
-            <i data-lucide="check-circle" class="w-5 h-5 mr-2"></i>
-            <span>Message sent successfully!</span>
         </div>
     </div>
 
@@ -316,66 +207,22 @@
     <div id="page-container">
 
         <!-- ===== HOME PAGE ===== -->
-        <main id="home-page" data-page="home" class="page-content">
+        <main id="home-page" data-page="home" class="page-content active">
             <!-- Hero Section -->
-            <section class="relative bg-gradient-to-br from-primary-blue via-primary-dark to-blue-900 text-white py-28 md:py-48 overflow-hidden">
-                <div class="absolute inset-0 bg-black/20"></div>
-                <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-accent-orange/10 rounded-full blur-3xl"></div>
-                    <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-primary-blue/20 rounded-full blur-3xl"></div>
-                </div>
+            <section class="relative bg-primary-blue text-white py-24 md:py-40">
+                <div class="absolute inset-0 bg-black opacity-20"></div>
                 <div class="container mx-auto px-6 relative z-10">
-                    <div class="max-w-4xl animate-fade-in">
-                        <div class="inline-flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 mb-6">
-                            <i data-lucide="sparkles" class="w-4 h-4 mr-2 text-accent-orange"></i>
-                            <span class="text-sm font-medium">Trusted by 200+ businesses worldwide</span>
-                        </div>
-                        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 animate-slide-up">
-                            Empowering Your
-                            <span class="text-accent-orange">Digital Future</span>
+                    <div class="max-w-3xl">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                            Empowering Your Business with
+                            <span class="text-accent-orange">Scalable Tech</span>
                         </h1>
-                        <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl leading-relaxed">
-                            From robust IT strategies to custom software and secure networks, Pixelium Solutions is your dedicated partner in digital transformation and business growth.
+                        <p class="text-xl md:text-2xl text-gray-200 mb-10">
+                            From robust IT strategies to custom software and secure networks, Pixelium Solutions is your dedicated partner in digital transformation.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#contact" data-target="contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 nav-link">
-                                <span>Start Your Project</span>
-                                <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-                            </a>
-                            <a href="#portfolio" data-target="portfolio" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white text-lg font-semibold rounded-lg hover:bg-white/20 transition-all backdrop-blur-sm border border-white/20 nav-link">
-                                <span>View Our Work</span>
-                                <i data-lucide="eye" class="w-5 h-5 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Scroll Indicator -->
-                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <i data-lucide="mouse-pointer" class="w-6 h-6 text-white/70"></i>
-                </div>
-            </section>
-
-            <!-- Stats Section -->
-            <section class="py-16 bg-white border-b">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                        <div class="animate-fade-in" style="animation-delay: 0.1s">
-                            <div class="text-3xl md:text-5xl font-bold text-primary-dark mb-2">200+</div>
-                            <div class="text-gray-600">Projects Delivered</div>
-                        </div>
-                        <div class="animate-fade-in" style="animation-delay: 0.2s">
-                            <div class="text-3xl md:text-5xl font-bold text-primary-dark mb-2">98%</div>
-                            <div class="text-gray-600">Client Satisfaction</div>
-                        </div>
-                        <div class="animate-fade-in" style="animation-delay: 0.3s">
-                            <div class="text-3xl md:text-5xl font-bold text-primary-dark mb-2">50+</div>
-                            <div class="text-gray-600">Expert Team Members</div>
-                        </div>
-                        <div class="animate-fade-in" style="animation-delay: 0.4s">
-                            <div class="text-3xl md:text-5xl font-bold text-primary-dark mb-2">24/7</div>
-                            <div class="text-gray-600">Support Available</div>
-                        </div>
+                        <a href="#contact" data-target="contact" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg nav-link">
+                            Get a Free Consultation
+                        </a>
                     </div>
                 </div>
             </section>
@@ -385,268 +232,604 @@
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Core Services</h2>
-                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Comprehensive IT solutions designed to drive your business forward in the digital age.</p>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">We provide the full spectrum of IT services to move your business forward.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Service Cards remain the same but with enhanced animations -->
-                        <!-- [Previous service cards code with added animation classes] -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Process Section -->
-            <section class="py-20 bg-white">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Proven Process</h2>
-                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">A structured approach that ensures success from concept to delivery.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i data-lucide="search" class="w-8 h-8 text-white"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-3">Discovery</h3>
-                            <p class="text-gray-600">We analyze your needs and define project goals</p>
+                        <!-- Service Card 1 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="briefcase-business" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">IT Consultancy</h3>
+                            <p class="text-gray-600 mb-6">Strategic guidance to align your technology with your business goals.</p>
+                            <a href="#service-it" data-target="service-it" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
                         </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i data-lucide="palette" class="w-8 h-8 text-white"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-3">Design</h3>
-                            <p class="text-gray-600">Create solutions tailored to your requirements</p>
+                        <!-- Service Card 2 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="network" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Networking</h3>
+                            <p class="text-gray-600 mb-6">Designing and managing secure, high-performance networks.</p>
+                            <a href="#service-network" data-target="service-network" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
                         </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i data-lucide="code" class="w-8 h-8 text-white"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-3">Development</h3>
-                            <p class="text-gray-600">Build robust solutions with cutting-edge technology</p>
+                        <!-- Service Card 3 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="server" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Network Infrastructure</h3>
+                            <p class="text-gray-600 mb-6">Building the rock-solid hardware foundation your business relies on.</p>
+                            <a href="#service-infra" data-target="service-infra" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
                         </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i data-lucide="rocket" class="w-8 h-8 text-white"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-3">Delivery</h3>
-                            <p class="text-gray-600">Launch and provide ongoing support</p>
+                        <!-- Service Card 4 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="code-xml" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Software Engineering</h3>
+                            <p class="text-gray-600 mb-6">Custom applications built to solve your unique challenges.</p>
+                            <a href="#service-software" data-target="service-software" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 5 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="monitor-smartphone" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Web Development</h3>
+                            <p class="text-gray-600 mb-6">Engaging, responsive websites that convert visitors into customers.</p>
+                            <a href="#service-web" data-target="service-web" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
+                        </div>
+                        <!-- Service Card 6 -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
+                            <i data-lucide="palette" class="w-12 h-12 text-accent-orange mb-6"></i>
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4">Graphic Designing</h3>
+                            <p class="text-gray-600 mb-6">Creating a memorable brand identity that stands out.</p>
+                            <a href="#service-design" data-target="service-design" class="font-medium text-primary-blue hover:text-accent-orange nav-link">Learn More &rarr;</a>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Testimonials -->
-            <!-- [Enhanced testimonials section with better styling] -->
-
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Trusted by Growing Businesses</h2>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">See what our clients have to say about our partnership.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
+                            <p class="text-gray-700 text-lg italic mb-6">"Pixelium Solutions transformed our outdated network. Our team is more productive, and our data is finally secure. They are true partners."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/50x50/0a58ca/white?text=JS" alt="John Smith" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary-dark">John Smith</h4>
+                                    <p class="text-gray-600 text-sm">CEO, Innovate Logistics</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
+                            <p class="text-gray-700 text-lg italic mb-6">"The custom software they built for us automated 80% of our manual data entry. It's been a complete game-changer for our operations."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/50x50/0a58ca/white?text=ML" alt="Maria Lee" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary-dark">Maria Lee</h4>
+                                    <p class="text-gray-600 text-sm">COO, FinCore Analytics</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
+                            <p class="text-gray-700 text-lg italic mb-6">"From our new website to a complete rebrand, the Pixelium team was brilliant. They listened to our vision and delivered beyond expectations."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/50x50/0a58ca/white?text=DW" alt="David Wang" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary-dark">David Wang</h4>
+                                    <p class="text-gray-600 text-sm">Marketing Director, Apex Realty</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
             <!-- Final CTA -->
-            <!-- [Enhanced CTA section] -->
-
+            <section class="bg-primary-dark text-white py-20">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Technology?</h2>
+                    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Pixelium Solutions can help you achieve your business goals.
+                    </p>
+                    <a href="#contact" data-target="contact" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg nav-link">
+                        Start Your Project Today
+                    </a>
+                </div>
+            </section>
         </main>
 
-        <!-- ===== OTHER PAGES ===== -->
-        <!-- [All other pages remain with enhanced styling and functionality] -->
+        <!-- ===== ABOUT US PAGE ===== -->
+        <main id="about-page" data-page="about" class="page-content">
+            <section class="py-20 bg-light-gray">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-16">About Pixelium Solutions</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
+                        <div>
+                            <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Mission</h2>
+                            <p class="text-lg text-gray-700 mb-4">To empower small and medium-sized businesses with enterprise-level IT solutions, custom software, and strategic guidance, enabling them to compete and thrive in a digital-first world.</p>
+                            <p class="text-lg text-gray-700">We believe technology should be an asset, not a burden. Our mission is to simplify the complex, secure the vulnerable, and build the future—one client at a time.</p>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Vision</h2>
+                            <p class="text-lg text-gray-700 mb-4">To be the most trusted and results-driven technology partner for SMBs, known for our unwavering commitment to client success, innovation, and integrity.</p>
+                            
+                            <h3 class="text-2xl font-semibold text-primary-dark mb-4 mt-8">Our Core Values</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Partnership:</strong> Your success is our success.</li>
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Integrity:</strong> Honest, transparent, and ethical in all we do.</li>
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Innovation:</strong> Continuously learning and adapting to deliver modern solutions.</li>
+                                <li class="flex items-center text-lg text-gray-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent-orange mr-3"></i> <strong>Excellence:</strong> We hold ourselves to the highest standards of quality.</li>
+                            </ul>
+                        </div>
+                    </div>
 
-    </div>
+                    <!-- Meet the Team -->
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Meet Our Core Team</h2>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">The experts dedicated to your success.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=CEO" alt="Jane Doe, CEO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Jane Doe</h4>
+                            <p class="text-accent-orange font-medium mb-2">Founder & CEO</p>
+                            <p class="text-gray-600 text-sm">20+ years in IT strategy and leadership, dedicated to helping SMBs scale.</p>
+                        </div>
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=CTO" alt="Michael Chen, CTO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Michael Chen</h4>
+                            <p class="text-accent-orange font-medium mb-2">Chief Technology Officer</p>
+                            <p class="text-gray-600 text-sm">Lead architect for our software and infrastructure solutions.</p>
+                        </div>
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=Lead" alt="Emily Rodriguez, Lead Designer" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Emily Rodriguez</h4>
+                            <p class="text-accent-orange font-medium mb-2">Lead UI/UX & Brand</p>
+                            <p class="text-gray-600 text-sm">Crafting intuitive experiences and memorable brand identities.</p>
+                        </div>
+                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <img src="https://placehold.co/150x150/0a58ca/white?text=Ops" alt="Sam Kelechi, Head of Operations" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
+                            <h4 class="text-xl font-bold text-primary-dark">Sam Kelechi</h4>
+                            <p class="text-accent-orange font-medium mb-2">Head of Operations</p>
+                            <p class="text-gray-600 text-sm">Ensuring every project is delivered on time and on budget.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== SERVICES MAIN PAGE ===== -->
+        <main id="services-page" data-page="services" class="page-content">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-6">Our Services</h1>
+                    <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">We offer a comprehensive suite of technology services. Explore each category to find the right solution for you.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <!-- Detailed Service Card 1 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="briefcase-business" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">IT Consultancy</h3>
+                                <p class="text-gray-700 mb-6">Our expert consultants work with you to create a technology roadmap that supports your growth, optimizes your budget, and mitigates risk. From security audits to digital transformation strategy, we provide the high-level insights you need.</p>
+                            </div>
+                            <a href="#service-it" data-target="service-it" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View IT Consultancy Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 2 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="network" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Networking</h3>
+                                <p class="text-gray-700 mb-6">A fast, reliable, and secure network is the backbone of any modern business. We design, implement, and manage wired and wireless networks that just work, complete with advanced security protocols, VPNs, and performance monitoring.</p>
+                            </div>
+                            <a href="#service-network" data-target="service-network" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Networking Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 3 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="server" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Network Infrastructure</h3>
+                                <p class="text-gray-700 mb-6">Go beyond the connection. We build and maintain your core infrastructure, including servers, data centers, cloud migrations (Azure/AWS), and virtualization. We ensure your systems are scalable, redundant, and always available.</p>
+                            </div>
+                            <a href="#service-infra" data-target="service-infra" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Infrastructure Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 4 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="code-xml" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Software Engineering</h3>
+                                <p class="text-gray-700 mb-6">When off-the-shelf software doesn't fit, we build it. Our engineers develop custom applications, automation scripts, and database solutions tailored to your exact processes, helping you reduce costs and increase efficiency.</p>
+                            </div>
+                            <a href="#service-software" data-target="service-software" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Software Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 5 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="monitor-smartphone" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Web Development</h3>
+                                <p class="text-gray-700 mb-6">Your website is your digital front door. We create beautiful, responsive, and SEO-friendly websites that look great on all devices. From simple landing pages to complex e-commerce platforms, we build sites that drive results.</p>
+                            </div>
+                            <a href="#service-web" data-target="service-web" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Web Dev Details
+                            </a>
+                        </div>
+                        <!-- Detailed Service Card 6 -->
+                        <div class="bg-light-gray p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                            <div class="flex-shrink-0 mb-6">
+                                <i data-lucide="palette" class="w-14 h-14 text-accent-orange"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-semibold text-primary-dark mb-4">Graphic Designing</h3>
+                                <p class="text-gray-700 mb-6">A strong brand builds trust. Our design team creates cohesive visual identities, including logos, branding guidelines, marketing materials, and digital assets that capture your unique value and resonate with your audience.</p>
+                            </div>
+                            <a href="#service-design" data-target="service-design" class="inline-block mt-4 px-6 py-3 bg-primary-blue text-white text-center font-medium rounded-lg hover:bg-primary-dark transition-colors nav-link">
+                                View Design Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ===== SERVICE SUB-PAGES ===== -->
+        
+        <!-- IT Consultancy Page -->
+        <main id="service-it-page" data-page="service-it" class="page-content">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <a href="#services" data-target="services" class="inline-flex items-center text-primary-blue font-medium mb-8 hover:text-accent-orange nav-link">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                        Back to All Services
+                    </a>
+                    <i data-lucide="briefcase-business" class="w-16 h-16 text-accent-orange mb-6"></i>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark mb-8">IT Consultancy</h1>
+                    <p class="text-xl text-gray-700 mb-10">Strategic guidance to align your technology with your business goals. We help you make smarter IT investments, manage risk, and plan for future growth.</p>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Our Consultancy Process</h2>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">1</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Discovery & Audit</h3>
+                                <p class="text-gray-700">We begin by conducting a comprehensive audit of your current IT systems, security protocols, and business processes to identify pain points and opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">2</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Strategy & Roadmap</h3>
+                                <p class="text-gray-700">Based on our findings, we develop a strategic, multi-year IT roadmap. This includes budget forecasting, technology recommendations, and a clear implementation plan.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">3</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Implementation & Governance</h3>
+                                <p class="text-gray-700">We can either guide your in-house team or manage the full implementation of new solutions, ensuring best practices are followed and disruption is minimized.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-6">4</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800">Ongoing Advisory (vCIO)</h3>
+                                <p class="text-gray-700">We act as your virtual Chief Information Officer (vCIO), providing ongoing strategic advice to ensure your technology scales with your business.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-semibold text-primary-dark mb-6">Key Benefits</h2>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Reduce long-term IT costs</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Improve cybersecurity posture</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Increase operational efficiency</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-6 h-6 text-accent-orange mr-3"></i> Make informed, future-proof decisions</li>
+                    </ul>
+
+                    <div class="text-center mt-16">
+                        <button class="px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg modal-open-btn">
+                            Get a Quote for IT Consultancy
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ===== CONTACT PAGE ===== -->
+        <main id="contact-page" data-page="contact" class="page-content">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary-dark text-center mb-6">Get in Touch</h1>
+                    <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">We're here to help. Send us a message, and our team will get back to you within one business day.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <!-- Contact Form -->
+                        <div class="bg-light-gray p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100">
+                            <h2 class="text-3xl font-bold text-primary-dark mb-8">Send Us a Message</h2>
+                            <form action="#" method="POST">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <input type="text" id="contact-name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                    </div>
+                                    <div>
+                                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                        <input type="email" id="contact-email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <label for="contact-company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                                    <input type="text" id="contact-company" name="company" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                </div>
+                                <div class="mt-6">
+                                    <label for="contact-service" class="block text-sm font-medium text-gray-700">Service of Interest</label>
+                                    <select id="contact-service" name="service" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white">
+                                        <option>Select a service</option>
+                                        <option value="it-consultancy">IT Consultancy</option>
+                                        <option value="networking">Networking</option>
+                                        <option value="infrastructure">Network Infrastructure</option>
+                                        <option value="software">Software Engineering</option>
+                                        <option value="web-dev">Web Development</option>
+                                        <option value="design">Graphic Designing</option>
+                                    </select>
+                                </div>
+                                <div class="mt-6">
+                                    <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="contact-message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue"></textarea>
+                                </div>
+                                <div class="mt-8">
+                                    <button type="submit" class="w-full px-8 py-4 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-colors shadow-lg">
+                                        Submit Request
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Contact Info & Map -->
+                        <div>
+                            <h2 class="text-3xl font-bold text-primary-dark mb-8">Contact Details</h2>
+                            <div class="space-y-6 text-lg">
+                                <div class="flex items-start">
+                                    <i data-lucide="phone" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Phone</h4>
+                                        <a href="tel:+15551234567" class="text-primary-blue hover:text-accent-orange">+1 (555) 123-4567</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="mail" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Email</h4>
+                                        <a href="mailto:hello@pixelium.com" class="text-primary-blue hover:text-accent-orange">hello@pixelium.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Office</h4>
+                                        <p class="text-gray-700">123 Tech Avenue, Suite 400<br>Metropolis, NY 10001</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Embedded Map Placeholder -->
+                            <div class="mt-10 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                                <img src="https://placehold.co/600x400/e0e0e0/666?text=Embedded+Google+Map" alt="Google Map of Pixelium Solutions location" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+    </div> <!-- End Page Container -->
 
     <!-- ===== FOOTER ===== -->
-    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+    <footer class="bg-gray-900 text-gray-300 py-16">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <!-- Footer columns remain the same but with enhanced styling -->
+                <!-- Column 1: Logo & Social -->
+                <div>
+                    <a href="#home" class="nav-link flex items-center" data-target="home">
+                        <div class="w-10 h-10 bg-primary-blue rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-lg">P</span>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Pixelium<span class="text-accent-orange">.</span></span>
+                    </a>
+                    <p class="text-gray-400 mb-6">Empowering Your Business with Scalable Tech Solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Twitter"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" data-target="home" class="hover:text-white nav-link">Home</a></li>
+                        <li><a href="#about" data-target="about" class="hover:text-white nav-link">About Us</a></li>
+                        <li><a href="#services" data-target="services" class="hover:text-white nav-link">Services</a></li>
+                        <li><a href="#contact" data-target="contact" class="hover:text-white nav-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Services -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Our Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#service-it" data-target="service-it" class="hover:text-white nav-link">IT Consultancy</a></li>
+                        <li><a href="#service-network" data-target="service-network" class="hover:text-white nav-link">Networking</a></li>
+                        <li><a href="#service-infra" data-target="service-infra" class="hover:text-white nav-link">Network Infrastructure</a></li>
+                        <li><a href="#service-software" data-target="service-software" class="hover:text-white nav-link">Software Engineering</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4: Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <span>123 Tech Avenue, Suite 400<br>Metropolis, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="phone" class="w-5 h-5 mr-3"></i>
+                            <a href="tel:+15551234567" class="hover:text-white">+1 (555) 123-4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="mail" class="w-5 h-5 mr-3"></i>
+                            <a href="mailto:hello@pixelium.com" class="hover:text-white">hello@pixelium.com</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             
             <hr class="border-gray-700 my-10">
             
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-gray-500 text-sm mb-4 md:mb-0">
-                    &copy; <span id="current-year"></span> Pixelium Solutions. All Rights Reserved.
-                </div>
-                <div class="flex space-x-6 text-sm">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
-                </div>
+            <div class="text-center text-gray-500">
+                &copy; <span id="current-year"></span> Pixelium Solutions. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- ===== ENHANCED JAVASCRIPT ===== -->
+    <!-- ===== FIXED JAVASCRIPT ===== -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
+        document.addEventListener('DOMContentLoaded', function() {
             // Initialize Lucide Icons
             lucide.createIcons();
-
-            // Set current year
+            
+            // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
-
-            // Hide loading screen
-            const loadingScreen = document.getElementById('loading-screen');
-            setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 300);
-            }, 1000);
-
-            // Enhanced page navigation
+            
+            // Page Navigation
             const allPages = document.querySelectorAll('.page-content');
             const allNavLinks = document.querySelectorAll('.nav-link');
             const mobileMenu = document.getElementById('mobile-menu');
-
+            
             function showPage(pageId) {
-                allPages.forEach(page => page.classList.add('hidden'));
+                // Hide all pages
+                allPages.forEach(page => {
+                    page.classList.remove('active');
+                    setTimeout(() => {
+                        page.style.display = 'none';
+                    }, 300);
+                });
                 
+                // Show the target page
                 const targetPage = document.querySelector(`[data-page="${pageId}"]`);
                 if (targetPage) {
-                    targetPage.classList.remove('hidden');
-                    // Add animation to page content
-                    targetPage.querySelectorAll('.animate-on-load').forEach((element, index) => {
-                        element.style.animationDelay = `${index * 0.1}s`;
-                    });
+                    targetPage.style.display = 'block';
+                    setTimeout(() => {
+                        targetPage.classList.add('active');
+                    }, 10);
                 } else {
-                    document.querySelector('[data-page="home"]').classList.remove('hidden');
+                    // Fallback to home if page not found
+                    document.querySelector('[data-page="home"]').style.display = 'block';
+                    setTimeout(() => {
+                        document.querySelector('[data-page="home"]').classList.add('active');
+                    }, 10);
                     pageId = 'home';
                 }
-
-                // Update active nav links
+                
+                // Update active state on nav links
                 allNavLinks.forEach(link => {
-                    link.classList.toggle('active', link.dataset.target === pageId);
+                    if (link.dataset.target === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
                 });
-
+                
+                // Scroll to top on page change
                 window.scrollTo(0, 0);
+                
+                // Close mobile menu if it's open
                 mobileMenu.classList.add('hidden');
             }
-
-            // Event delegation for navigation
-            document.body.addEventListener('click', (event) => {
-                const navLink = event.target.closest('.nav-link');
-                if (navLink) {
+            
+            // Add click event listener to all nav links
+            document.addEventListener('click', function(event) {
+                if (event.target.matches('.nav-link') || event.target.closest('.nav-link')) {
                     event.preventDefault();
+                    const navLink = event.target.matches('.nav-link') ? 
+                        event.target : event.target.closest('.nav-link');
                     const targetPageId = navLink.dataset.target;
+                    
                     if (targetPageId) {
+                        // Update hash in URL
                         window.location.hash = targetPageId;
+                        // Show the page
                         showPage(targetPageId);
                     }
                 }
             });
-
-            // Mobile menu toggle
+            
+            // Mobile Menu Toggle
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
-
-            // Enhanced modal functionality
+            
+            // Modal Logic
             const modal = document.getElementById('quote-modal');
             const closeModalBtn = document.getElementById('close-modal-btn');
             const openModalBtns = document.querySelectorAll('.modal-open-btn, #nav-quote-btn');
-
+            
             function openModal() {
                 modal.classList.remove('opacity-0', 'invisible');
-                modal.querySelector('.modal-content').classList.remove('scale-95');
             }
-
+            
             function closeModal() {
                 modal.classList.add('opacity-0', 'invisible');
-                modal.querySelector('.modal-content').classList.add('scale-95');
             }
-
-            openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
-            closeModalBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal) closeModal();
+            
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', openModal);
             });
-
-            // Back to top button
-            const backToTopBtn = document.getElementById('back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.remove('opacity-0', 'invisible');
-                    backToTopBtn.classList.add('opacity-100', 'visible');
-                } else {
-                    backToTopBtn.classList.remove('opacity-100', 'visible');
-                    backToTopBtn.classList.add('opacity-0', 'invisible');
+            
+            closeModalBtn.addEventListener('click', closeModal);
+            
+            // Close modal if background is clicked
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
                 }
             });
-
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
+            
             // Form handling
             const quoteForm = document.getElementById('quote-form');
-            const successNotification = document.getElementById('success-notification');
-
-            quoteForm.addEventListener('submit', async (event) => {
+            quoteForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                
-                const submitBtn = quoteForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                // Show loading state
-                submitBtn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>';
-                submitBtn.disabled = true;
-
-                // Simulate form submission
-                await new Promise(resolve => setTimeout(resolve, 2000));
-
-                // Show success message
-                successNotification.classList.remove('translate-x-full');
-                setTimeout(() => {
-                    successNotification.classList.add('translate-x-full');
-                }, 3000);
-
-                // Reset form and button
-                quoteForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                // In a real application, you would send the form data to a server here
+                alert('Thank you for your request! We will get back to you soon.');
                 closeModal();
+                quoteForm.reset();
             });
-
-            // Portfolio filtering
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filter = btn.dataset.filter;
-                    
-                    filterBtns.forEach(b => b.classList.remove('active', 'bg-primary-blue', 'text-white'));
-                    btn.classList.add('active', 'bg-primary-blue', 'text-white');
-                    
-                    portfolioItems.forEach(item => {
-                        if (filter === 'all' || item.dataset.category === filter) {
-                            item.style.display = 'block';
-                            setTimeout(() => item.style.opacity = '1', 50);
-                        } else {
-                            item.style.opacity = '0';
-                            setTimeout(() => item.style.display = 'none', 300);
-                        }
-                    });
-                });
-            });
-
-            // Initial page load
+            
+            // Initial Page Load
             const hash = window.location.hash.substring(1);
-            showPage(hash || 'home');
-
-            // Add intersection observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.service-card, .portfolio-item, .testimonial').forEach(el => {
-                observer.observe(el);
-            });
+            if (hash) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
         });
     </script>
 
