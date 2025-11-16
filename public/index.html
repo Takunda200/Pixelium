@@ -7,6 +7,8 @@
     <!-- SEO Meta Tags -->
     <title>Pixelium Solutions - IT, Web & Network Experts</title>
     <meta name="description" content="Pixelium Solutions offers expert IT consultancy, custom software engineering, network infrastructure, and web development services for small to medium-sized businesses. Get a free consultation today.">
+    <meta name="keywords" content="IT consultancy, web development, networking, software engineering, graphic design, IT solutions">
+    <meta name="author" content="Pixelium Solutions">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -156,14 +158,14 @@
                     <i data-lucide="x" class="w-7 h-7"></i>
                 </button>
             </div>
-            <form action="#" method="POST">
+            <form id="quote-form">
                 <div class="space-y-4">
                     <div>
-                        <label for="modal-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <label for="modal-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
                         <input type="text" id="modal-name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
                     </div>
                     <div>
-                        <label for="modal-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <label for="modal-email" class="block text-sm font-medium text-gray-700">Email Address *</label>
                         <input type="email" id="modal-email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
                     </div>
                     <div>
@@ -171,9 +173,9 @@
                         <input type="text" id="modal-company" name="company" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
                     </div>
                     <div>
-                        <label for="modal-service" class="block text-sm font-medium text-gray-700">Service of Interest</label>
-                        <select id="modal-service" name="service" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white">
-                            <option>Select a service</option>
+                        <label for="modal-service" class="block text-sm font-medium text-gray-700">Service of Interest *</label>
+                        <select id="modal-service" name="service" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white">
+                            <option value="">Select a service</option>
                             <option value="it-consultancy">IT Consultancy</option>
                             <option value="networking">Networking</option>
                             <option value="infrastructure">Network Infrastructure</option>
@@ -183,8 +185,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="modal-message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue"></textarea>
+                        <label for="modal-message" class="block text-sm font-medium text-gray-700">Project Details *</label>
+                        <textarea id="modal-message" name="message" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue" placeholder="Tell us about your project requirements, timeline, and goals..."></textarea>
                     </div>
                     <button type="submit" class="w-full px-6 py-3 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-colors">
                         Send Request
@@ -360,33 +362,27 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                             <img src="https://placehold.co/150x150/0a58ca/white?text=CEO" alt="Jane Doe, CEO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
-                            <h4 class="text-xl font-bold text-primary-dark">Takunda Matogo</h4>
+                            <h4 class="text-xl font-bold text-primary-dark">Jane Doe</h4>
                             <p class="text-accent-orange font-medium mb-2">Founder & CEO</p>
-                            <p class="text-gray-600 text-sm">20+ months in IT strategy and leadership, dedicated to helping SMBs scale.</p>
+                            <p class="text-gray-600 text-sm">20+ years in IT strategy and leadership, dedicated to helping SMBs scale.</p>
                         </div>
                         <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                             <img src="https://placehold.co/150x150/0a58ca/white?text=CTO" alt="Michael Chen, CTO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
-                            <h4 class="text-xl font-bold text-primary-dark">Charles T. Makumbe</h4>
+                            <h4 class="text-xl font-bold text-primary-dark">Michael Chen</h4>
                             <p class="text-accent-orange font-medium mb-2">Chief Technology Officer</p>
                             <p class="text-gray-600 text-sm">Lead architect for our software and infrastructure solutions.</p>
                         </div>
                         <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                             <img src="https://placehold.co/150x150/0a58ca/white?text=Lead" alt="Emily Rodriguez, Lead Designer" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
-                            <h4 class="text-xl font-bold text-primary-dark">Emmanuel Mandebvu</h4>
+                            <h4 class="text-xl font-bold text-primary-dark">Emily Rodriguez</h4>
                             <p class="text-accent-orange font-medium mb-2">Lead UI/UX & Brand</p>
                             <p class="text-gray-600 text-sm">Crafting intuitive experiences and memorable brand identities.</p>
                         </div>
                         <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                             <img src="https://placehold.co/150x150/0a58ca/white?text=Ops" alt="Sam Kelechi, Head of Operations" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
-                            <h4 class="text-xl font-bold text-primary-dark">Philip Zivai Mushore</h4>
+                            <h4 class="text-xl font-bold text-primary-dark">Sam Kelechi</h4>
                             <p class="text-accent-orange font-medium mb-2">Head of Operations</p>
                             <p class="text-gray-600 text-sm">Ensuring every project is delivered on time and on budget.</p>
-                        </div>
-                        <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-                            <img src="https://placehold.co/150x150/0a58ca/white?text=Ops" alt="Sam Kelechi, Head of Operations" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-blue">
-                            <h4 class="text-xl font-bold text-primary-dark">Elton Tinashe Fungurai</h4>
-                            <p class="text-accent-orange font-medium mb-2">Head of Development</p>
-                            <p class="text-gray-600 text-sm">Ensuring every Project .</p>
                         </div>
                     </div>
                 </div>
@@ -1111,14 +1107,14 @@
                         <!-- Contact Form -->
                         <div class="bg-light-gray p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100">
                             <h2 class="text-3xl font-bold text-primary-dark mb-8">Send Us a Message</h2>
-                            <form action="#" method="POST">
+                            <form id="contact-form">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div>
-                                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
                                         <input type="text" id="contact-name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
                                     </div>
                                     <div>
-                                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Email Address *</label>
                                         <input type="email" id="contact-email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue">
                                     </div>
                                 </div>
@@ -1129,7 +1125,7 @@
                                 <div class="mt-6">
                                     <label for="contact-service" class="block text-sm font-medium text-gray-700">Service of Interest</label>
                                     <select id="contact-service" name="service" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue bg-white">
-                                        <option>Select a service</option>
+                                        <option value="">Select a service</option>
                                         <option value="it-consultancy">IT Consultancy</option>
                                         <option value="networking">Networking</option>
                                         <option value="infrastructure">Network Infrastructure</option>
@@ -1139,8 +1135,8 @@
                                     </select>
                                 </div>
                                 <div class="mt-6">
-                                    <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
-                                    <textarea id="contact-message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue"></textarea>
+                                    <label for="contact-message" class="block text-sm font-medium text-gray-700">Message *</label>
+                                    <textarea id="contact-message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-blue" placeholder="Tell us about your project or inquiry..."></textarea>
                                 </div>
                                 <div class="mt-8">
                                     <button type="submit" class="w-full px-8 py-4 bg-accent-orange text-white text-lg font-semibold rounded-lg hover:bg-accent-orange-hover transition-colors shadow-lg">
@@ -1158,21 +1154,21 @@
                                     <i data-lucide="phone" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
                                     <div>
                                         <h4 class="font-semibold text-gray-800">Phone</h4>
-                                        <a href="tel:+15551234567" class="text-primary-blue hover:text-accent-orange">+263 782 156 087</a>
+                                        <a href="tel:+15551234567" class="text-primary-blue hover:text-accent-orange">+1 (555) 123-4567</a>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
                                     <i data-lucide="mail" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
                                     <div>
                                         <h4 class="font-semibold text-gray-800">Email</h4>
-                                        <a href="mailto:hello@pixelium.com" class="text-primary-blue hover:text-accent-orange">info@pixeliumsolutions.com</a>
+                                        <a href="mailto:hello@pixelium.com" class="text-primary-blue hover:text-accent-orange">hello@pixelium.com</a>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
                                     <i data-lucide="map-pin" class="w-7 h-7 text-accent-orange mr-5 mt-1 flex-shrink-0"></i>
                                     <div>
                                         <h4 class="font-semibold text-gray-800">Office</h4>
-                                        <p class="text-gray-700">3003 Kuwadzana<br>Harare, Zimbabwe</p>
+                                        <p class="text-gray-700">123 Tech Avenue, Suite 400<br>Metropolis, NY 10001</p>
                                     </div>
                                 </div>
                             </div>
@@ -1243,15 +1239,15 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 flex-shrink-0"></i>
-                            <span>3003 Kuwadzana<br>Harare, Zimbabwe</span>
+                            <span>123 Tech Avenue, Suite 400<br>Metropolis, NY 10001</span>
                         </li>
                         <li class="flex items-center">
                             <i data-lucide="phone" class="w-5 h-5 mr-3"></i>
-                            <a href="tel:+15551234567" class="hover:text-white">+263 782 156 087</a>
+                            <a href="tel:+15551234567" class="hover:text-white">+1 (555) 123-4567</a>
                         </li>
                         <li class="flex items-center">
                             <i data-lucide="mail" class="w-5 h-5 mr-3"></i>
-                            <a href="mailto:hello@pixelium.com" class="hover:text-white">info@pixeliumsolutions.com</a>
+                            <a href="mailto:hello@pixelium.com" class="hover:text-white">hello@pixelium.com</a>
                         </li>
                     </ul>
                 </div>
@@ -1265,233 +1261,248 @@
         </div>
     </footer>
 
-    <!-- Add this updated script section to your HTML -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Lucide Icons
-    lucide.createIcons();
-    
-    // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Navigation System
-    const allPages = document.querySelectorAll('.page');
-    const allNavLinks = document.querySelectorAll('.nav-link');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    // Simple page navigation function
-    function showPage(pageId) {
-        // Hide all pages
-        allPages.forEach(page => {
-            page.classList.remove('active');
-        });
-        
-        // Show target page
-        const targetPage = document.querySelector(`[data-page="${pageId}"]`);
-        if (targetPage) {
-            targetPage.classList.add('active');
-        } else {
-            // Fallback to home
-            document.querySelector('[data-page="home"]').classList.add('active');
-            pageId = 'home';
-        }
-        
-        // Update active nav links
-        allNavLinks.forEach(link => {
-            link.classList.toggle('active', link.dataset.target === pageId);
-        });
-        
-        // Close mobile menu
-        mobileMenu.classList.add('hidden');
-        
-        // Scroll to top
-        window.scrollTo(0, 0);
-    }
-    
-    // Navigation click handler
-    document.addEventListener('click', function(event) {
-        const navLink = event.target.closest('.nav-link');
-        if (navLink) {
-            event.preventDefault();
-            const targetPage = navLink.dataset.target;
-            if (targetPage) {
-                showPage(targetPage);
-                // Update URL hash
-                window.location.hash = targetPage;
-            }
-        }
-    });
-    
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-    });
-    
-    // Modal functionality
-    const modal = document.getElementById('quote-modal');
-    const openModalBtns = document.querySelectorAll('.modal-open-btn, #nav-quote-btn');
-    
-    openModalBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            modal.classList.remove('opacity-0', 'invisible');
-        });
-    });
-    
-    document.getElementById('close-modal-btn').addEventListener('click', function() {
-        modal.classList.add('opacity-0', 'invisible');
-    });
-    
-    // Close modal when clicking outside
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.classList.add('opacity-0', 'invisible');
-        }
-    });
-    
-    // Portfolio filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.dataset.filter;
+    <!-- ===== FIXED JAVASCRIPT WITH RENDER URL ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide Icons
+            lucide.createIcons();
             
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
             
-            // Filter items
-            portfolioItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-        });
-    });
-    
-    // Form handling with backend integration
-    const quoteForm = document.getElementById('quote-form');
-    const contactForm = document.querySelector('#contact-page form');
-    
-    // Quote form submission
-    quoteForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const submitBtn = quoteForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = 'Sending...';
-        submitBtn.disabled = true;
-        
-        try {
-            const formData = {
-                name: document.getElementById('modal-name').value,
-                email: document.getElementById('modal-email').value,
-                company: document.getElementById('modal-company').value,
-                service: document.getElementById('modal-service').value,
-                message: document.getElementById('modal-message').value
-            };
+            // API Configuration - Using your Render URL
+            const API_BASE_URL = 'https://pixelium-website.onrender.com';
             
-            const response = await fetch('/api/quote', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
+            // Navigation System
+            const allPages = document.querySelectorAll('.page');
+            const allNavLinks = document.querySelectorAll('.nav-link');
+            const mobileMenu = document.getElementById('mobile-menu');
             
-            const result = await response.json();
-            
-            if (result.success) {
-                alert(result.message);
-                quoteForm.reset();
-                modal.classList.add('opacity-0', 'invisible');
-            } else {
-                alert(result.message);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Failed to send request. Please check your connection and try again.');
-        } finally {
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-    
-    // Contact form submission
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Show loading state
-            submitBtn.innerHTML = 'Sending...';
-            submitBtn.disabled = true;
-            
-            try {
-                const formData = {
-                    name: document.getElementById('contact-name').value,
-                    email: document.getElementById('contact-email').value,
-                    company: document.getElementById('contact-company').value,
-                    service: document.getElementById('contact-service').value,
-                    message: document.getElementById('contact-message').value
-                };
+            // Simple page navigation function
+            function showPage(pageId) {
+                console.log('Showing page:', pageId);
                 
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
+                // Hide all pages
+                allPages.forEach(page => {
+                    page.classList.remove('active');
                 });
                 
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert(result.message);
-                    contactForm.reset();
+                // Show target page
+                const targetPage = document.querySelector(`[data-page="${pageId}"]`);
+                if (targetPage) {
+                    targetPage.classList.add('active');
                 } else {
-                    alert(result.message);
+                    // Fallback to home
+                    document.querySelector('[data-page="home"]').classList.add('active');
+                    pageId = 'home';
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Failed to send message. Please check your connection and try again.');
-            } finally {
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                
+                // Update active nav links
+                allNavLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.target === pageId);
+                });
+                
+                // Close mobile menu
+                mobileMenu.classList.add('hidden');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
+            
+            // Navigation click handler
+            document.addEventListener('click', function(event) {
+                const navLink = event.target.closest('.nav-link');
+                if (navLink) {
+                    event.preventDefault();
+                    const targetPage = navLink.dataset.target;
+                    if (targetPage) {
+                        showPage(targetPage);
+                        // Update URL hash
+                        window.location.hash = targetPage;
+                    }
+                }
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Modal functionality
+            const modal = document.getElementById('quote-modal');
+            const openModalBtns = document.querySelectorAll('.modal-open-btn, #nav-quote-btn');
+            
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    modal.classList.remove('opacity-0', 'invisible');
+                });
+            });
+            
+            document.getElementById('close-modal-btn').addEventListener('click', function() {
+                modal.classList.add('opacity-0', 'invisible');
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            // Portfolio filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter items
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+            
+            // Form handling with Render backend integration
+            const quoteForm = document.getElementById('quote-form');
+            const contactForm = document.getElementById('contact-form');
+            
+            // Quote form submission
+            quoteForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = quoteForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                // Show loading state
+                submitBtn.innerHTML = 'Sending...';
+                submitBtn.disabled = true;
+                
+                try {
+                    const formData = {
+                        name: document.getElementById('modal-name').value,
+                        email: document.getElementById('modal-email').value,
+                        company: document.getElementById('modal-company').value,
+                        service: document.getElementById('modal-service').value,
+                        message: document.getElementById('modal-message').value
+                    };
+                    
+                    console.log('Sending quote request to:', `${API_BASE_URL}/api/quote`);
+                    
+                    const response = await fetch(`${API_BASE_URL}/api/quote`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        alert(result.message);
+                        quoteForm.reset();
+                        modal.classList.add('opacity-0', 'invisible');
+                    } else {
+                        alert(result.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to send request. Please check your connection and try again.');
+                } finally {
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+            
+            // Contact form submission
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        const formData = {
+                            name: document.getElementById('contact-name').value,
+                            email: document.getElementById('contact-email').value,
+                            company: document.getElementById('contact-company').value,
+                            service: document.getElementById('contact-service').value,
+                            message: document.getElementById('contact-message').value
+                        };
+                        
+                        console.log('Sending contact request to:', `${API_BASE_URL}/api/contact`);
+                        
+                        const response = await fetch(`${API_BASE_URL}/api/contact`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData)
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            alert(result.message);
+                            contactForm.reset();
+                        } else {
+                            alert(result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Failed to send message. Please check your connection and try again.');
+                    } finally {
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+            
+            // Handle initial page load
+            function handleInitialPage() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.querySelector(`[data-page="${hash}"]`)) {
+                    showPage(hash);
+                } else {
+                    showPage('home');
+                }
+            }
+            
+            // Handle browser back/forward
+            window.addEventListener('hashchange', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.querySelector(`[data-page="${hash}"]`)) {
+                    showPage(hash);
+                }
+            });
+            
+            // Initialize
+            handleInitialPage();
+            
+            // Test API connection on load
+            fetch(`${API_BASE_URL}/api/health`)
+                .then(response => response.json())
+                .then(data => console.log('API Health:', data))
+                .catch(error => console.log('API Connection Test Failed:', error));
         });
-    }
-    
-    // Handle initial page load
-    function handleInitialPage() {
-        const hash = window.location.hash.substring(1);
-        if (hash && document.querySelector(`[data-page="${hash}"]`)) {
-            showPage(hash);
-        } else {
-            showPage('home');
-        }
-    }
-    
-    // Handle browser back/forward
-    window.addEventListener('hashchange', function() {
-        const hash = window.location.hash.substring(1);
-        if (hash && document.querySelector(`[data-page="${hash}"]`)) {
-            showPage(hash);
-        }
-    });
-    
-    // Initialize
-    handleInitialPage();
-});
-</script>
+    </script>
 
 </body>
 </html>
