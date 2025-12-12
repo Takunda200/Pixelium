@@ -1,0 +1,68 @@
+/* Page Transition Effects */
+.page {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+}
+
+.modal {
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.portfolio-item {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.portfolio-item.hidden {
+    transform: scale(0.9);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Active Nav Link Colors */
+.nav-link.active {
+    color: #f97316; /* accent-orange */
+    font-weight: 600;
+}
+
+.filter-btn.active {
+    background-color: #0a58ca; /* primary-blue */
+    color: white;
+}
+
+/* Blog Content Styling */
+.blog-content h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #002d62;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.blog-content p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #374151;
+    margin-bottom: 1.5rem;
+}
+
+.blog-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    color: #374151;
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
+}
