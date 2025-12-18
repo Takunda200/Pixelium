@@ -66,3 +66,45 @@
 .blog-content li {
     margin-bottom: 0.5rem;
 }
+/* ===== LOGO CAROUSEL ANIMATION ===== */
+.logo-scroll-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 40px 0;
+}
+
+.logo-track {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+}
+
+/* Pause the scrolling when you hover over it */
+.logo-track:hover {
+    animation-play-state: paused;
+}
+
+.logo-item {
+    height: 80px; /* Adjust this to make logos bigger/smaller */
+    width: auto;
+    display: inline-block;
+    margin: 0 50px; /* Space between logos */
+    vertical-align: middle;
+    filter: grayscale(100%); /* Make logos black & white for a pro look */
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+/* When you hover over a logo, it becomes colored */
+.logo-item:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* The magic animation that moves the logos left */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
