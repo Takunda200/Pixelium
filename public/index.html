@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta name="google-site-verification" content="9gpv7ItlssqXu_8bAhqeq1cuMhiIWsujBGrBTKUpcH8" />
+    <meta name="google-site-verification" content="9gpv7ItlssqXu_8bAhqeq1cuMhiIWsujBGrBTKUpcH8" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -26,11 +26,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.min.js"></script>
-
     <script src="theme.js"></script>
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="font-sans text-gray-800 bg-white">
@@ -70,9 +67,14 @@
     </header>
 
     <main>
-        <section class="relative bg-primary-blue text-white py-24 md:py-40">
-            <div class="absolute inset-0 bg-black opacity-20"></div>
-            <div class="container mx-auto px-6 relative z-10">
+        <section class="relative bg-primary-blue text-white py-32 md:py-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Technology Background" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-20">
+            
+            <div class="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary-blue opacity-80"></div>
+            
+            <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
                 <div class="max-w-3xl">
                     <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
                         Empowering Your Business with
@@ -81,7 +83,7 @@
                     <p class="text-xl md:text-2xl text-gray-200 mb-10">
                         From robust IT strategies to custom software and secure networks, Pixelium Solutions is your dedicated partner in digital transformation.
                     </p>
-                    <a href="contact.html" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg">
+                    <a href="contact.html" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg transform hover:-translate-y-1 duration-200">
                         Get a Free Consultation
                     </a>
                 </div>
@@ -95,38 +97,38 @@
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">We provide the full spectrum of IT services to move your business forward.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-                        <i data-lucide="briefcase-business" class="w-12 h-12 text-accent-orange mb-6"></i>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-b-4 border-transparent hover:border-accent-orange group">
+                        <i data-lucide="briefcase-business" class="w-12 h-12 text-accent-orange mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-semibold text-primary-dark mb-4">IT Consultancy</h3>
                         <p class="text-gray-600 mb-6">Strategic guidance to align your technology with your business goals.</p>
                         <a href="services.html#it-details" class="font-medium text-primary-blue hover:text-accent-orange">Learn More &rarr;</a>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-                        <i data-lucide="network" class="w-12 h-12 text-accent-orange mb-6"></i>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-b-4 border-transparent hover:border-accent-orange group">
+                        <i data-lucide="network" class="w-12 h-12 text-accent-orange mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-semibold text-primary-dark mb-4">Networking</h3>
                         <p class="text-gray-600 mb-6">Designing and managing secure, high-performance networks.</p>
                         <a href="services.html" class="font-medium text-primary-blue hover:text-accent-orange">Learn More &rarr;</a>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-                        <i data-lucide="server" class="w-12 h-12 text-accent-orange mb-6"></i>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-b-4 border-transparent hover:border-accent-orange group">
+                        <i data-lucide="server" class="w-12 h-12 text-accent-orange mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-semibold text-primary-dark mb-4">Network Infrastructure</h3>
                         <p class="text-gray-600 mb-6">Building the rock-solid hardware foundation your business relies on.</p>
                         <a href="services.html" class="font-medium text-primary-blue hover:text-accent-orange">Learn More &rarr;</a>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-                        <i data-lucide="code-xml" class="w-12 h-12 text-accent-orange mb-6"></i>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-b-4 border-transparent hover:border-accent-orange group">
+                        <i data-lucide="code-xml" class="w-12 h-12 text-accent-orange mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-semibold text-primary-dark mb-4">Software Engineering</h3>
                         <p class="text-gray-600 mb-6">Custom applications built to solve your unique challenges.</p>
                         <a href="services.html#software-details" class="font-medium text-primary-blue hover:text-accent-orange">Learn More &rarr;</a>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-                        <i data-lucide="monitor-smartphone" class="w-12 h-12 text-accent-orange mb-6"></i>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-b-4 border-transparent hover:border-accent-orange group">
+                        <i data-lucide="monitor-smartphone" class="w-12 h-12 text-accent-orange mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-semibold text-primary-dark mb-4">Web Development</h3>
                         <p class="text-gray-600 mb-6">Engaging, responsive websites that convert visitors into customers.</p>
                         <a href="services.html#web-details" class="font-medium text-primary-blue hover:text-accent-orange">Learn More &rarr;</a>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-                        <i data-lucide="palette" class="w-12 h-12 text-accent-orange mb-6"></i>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-b-4 border-transparent hover:border-accent-orange group">
+                        <i data-lucide="palette" class="w-12 h-12 text-accent-orange mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-semibold text-primary-dark mb-4">Graphic Designing</h3>
                         <p class="text-gray-600 mb-6">Creating a memorable brand identity that stands out.</p>
                         <a href="services.html" class="font-medium text-primary-blue hover:text-accent-orange">Learn More &rarr;</a>
@@ -135,49 +137,35 @@
             </div>
         </section>
 
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Trusted by Growing Businesses</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">See what our clients have to say about our partnership.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
-                        <p class="text-gray-700 text-lg italic mb-6">"Pixelium Solutions transformed our outdated network. Our team is more productive, and our data is finally secure. They are true partners."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/50x50/0a58ca/white?text=JC" alt="Jacob Chipiro" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-semibold text-primary-dark">Jacob Chipiro</h4>
-                                <p class="text-gray-600 text-sm">IT support, ZBC</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
-                        <p class="text-gray-700 text-lg italic mb-6">"The custom software they built for us automated 80% of our manual data entry. It's been a complete game-changer for our operations."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/50x50/0a58ca/white?text=SA" alt="Shantel Agushito" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-semibold text-primary-dark">Shantel Agushito</h4>
-                                <p class="text-gray-600 text-sm">HR Officer, FinCore Analytics</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light-gray p-8 rounded-xl border border-gray-100">
-                        <p class="text-gray-700 text-lg italic mb-6">"From our new website to a complete rebrand, the Pixelium team was brilliant. They listened to our vision and delivered beyond expectations."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/50x50/0a58ca/white?text=DW" alt="David Wangu" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-semibold text-primary-dark">David Wangu</h4>
-                                <p class="text-gray-600 text-sm">Marketing Director, Apex Realty</p>
-                            </div>
-                        </div>
-                    </div>
+        <section class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-6 mb-10 text-center">
+                <h2 class="text-2xl font-bold text-gray-400 uppercase tracking-widest">Trusted By Companies Like</h2>
+            </div>
+            
+            <div class="logo-scroll-container">
+                <div class="logo-track">
+                    <img src="https://placehold.co/200x80/white/gray?text=ZBC" alt="ZBC" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=FinCore" alt="FinCore" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=Apex+Realty" alt="Apex Realty" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=Alpha+Media" alt="Alpha Media" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=HealthPlus" alt="HealthPlus" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=Logistics+Co" alt="Logistics Co" class="logo-item">
+
+                    <img src="https://placehold.co/200x80/white/gray?text=ZBC" alt="ZBC" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=FinCore" alt="FinCore" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=Apex+Realty" alt="Apex Realty" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=Alpha+Media" alt="Alpha Media" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=HealthPlus" alt="HealthPlus" class="logo-item">
+                    <img src="https://placehold.co/200x80/white/gray?text=Logistics+Co" alt="Logistics Co" class="logo-item">
                 </div>
             </div>
         </section>
         
-        <section class="bg-primary-dark text-white py-20">
-            <div class="container mx-auto px-6 text-center">
+        <section class="bg-primary-dark text-white py-20 relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-accent-orange opacity-10"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-primary-blue opacity-20"></div>
+            
+            <div class="container mx-auto px-6 text-center relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Technology?</h2>
                 <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's discuss how Pixelium Solutions can help you achieve your business goals.</p>
                 <a href="contact.html" class="inline-block px-10 py-4 bg-accent-orange text-white text-lg font-semibold rounded-full hover:bg-accent-orange-hover transition-colors shadow-lg">
@@ -187,7 +175,7 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-300 py-16">
+    <footer class="bg-gray-900 text-gray-300 py-16 border-t border-gray-800">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
@@ -203,22 +191,22 @@
                 <div>
                     <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-white">Home</a></li>
-                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
-                        <li><a href="services.html" class="hover:text-white">Services</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-semibold text-white mb-4">Our Services</h4>
                     <ul class="space-y-2">
-                        <li><a href="services.html#it-details" class="hover:text-white">IT Consultancy</a></li>
-                        <li><a href="services.html" class="hover:text-white">Networking</a></li>
-                        <li><a href="services.html" class="hover:text-white">Network Infrastructure</a></li>
-                        <li><a href="services.html#software-details" class="hover:text-white">Software Engineering</a></li>
-                        <li><a href="services.html#web-details" class="hover:text-white">Web Development</a></li>
-                        <li><a href="services.html" class="hover:text-white">Graphic Designing</a></li>
+                        <li><a href="services.html#it-details" class="hover:text-white transition-colors">IT Consultancy</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Networking</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Network Infrastructure</a></li>
+                        <li><a href="services.html#software-details" class="hover:text-white transition-colors">Software Engineering</a></li>
+                        <li><a href="services.html#web-details" class="hover:text-white transition-colors">Web Development</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Graphic Designing</a></li>
                     </ul>
                 </div>
                 
@@ -226,16 +214,19 @@
                     <h4 class="text-lg font-semibold text-white mb-4">Contact Us</h4>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-accent-orange"></i>
                             <span>3003 Kuwadzana<br>Harare</span>
                         </li>
                         <li class="flex items-center">
-                            <i data-lucide="phone" class="w-5 h-5 mr-3"></i>
-                            <a href="tel:+263782156087" class="hover:text-white">+263 782 156 087 / +263 783 373 226 / +263 784 632 744  </a>
+                            <i data-lucide="phone" class="w-5 h-5 mr-3 text-accent-orange"></i>
+                            <div class="flex flex-col">
+                                <a href="tel:+263782156087" class="hover:text-white transition-colors">+263 782 156 087</a>
+                                <a href="tel:+263783373226" class="hover:text-white transition-colors">+263 783 373 226</a>
+                            </div>
                         </li>
                         <li class="flex items-center">
-                            <i data-lucide="mail" class="w-5 h-5 mr-3"></i>
-                            <a href="mailto:info@pixeliumsolutions.co.zw" class="hover:text-white">admin@pixeliumsolutions.co.zw<br>info@pixeliumsolutions.co.zw<br>support@pixeliumsolutions.co.zw<br>sales@pixeliumsolutions.co.zw<br>marketing@pixeliumsolutions.co.zw<br></a>
+                            <i data-lucide="mail" class="w-5 h-5 mr-3 text-accent-orange"></i>
+                            <a href="mailto:info@pixeliumsolutions.co.zw" class="hover:text-white transition-colors">info@pixeliumsolutions.co.zw</a>
                         </li>
                     </ul>
                 </div>
